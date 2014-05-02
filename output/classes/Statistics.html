@@ -106,12 +106,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">14</span>
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">4</span>
                                 </a>
                             </li>
                             <li>
@@ -136,10 +136,10 @@
                                 <div class="accordion" style="margin-bottom: 0">
         <div class="accordion-group">
             <div class="accordion-heading">
-                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1307841909"></a>
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1825655340"></a>
                                 <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
             </div>
-            <div id="namespace-1307841909" class="accordion-body collapse in">
+            <div id="namespace-1825655340" class="accordion-body collapse in">
                 <div class="accordion-inner">
 
                     
@@ -164,8 +164,8 @@
                     <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
 
                     <h1><small>\</small>Statistics</h1>
-                    <p><em>Class Report.Statistics</em></p>
-                    <p>This class is used to retrieve statistics about the statements.</p>
+                    <p><em>this class extends Report class.</em></p>
+                    <p>The Statistics class provides the ability to quickly query the LRS.</p>
 
                     <section id="summary">
                         <h2>Summary</h2>
@@ -188,7 +188,7 @@
                                                                     <a href="../classes/Statistics.html#method_monthly" class="">monthly()</a><br />
                                                                     <a href="../classes/Statistics.html#method_weekly" class="">weekly()</a><br />
                                                                     <a href="../classes/Statistics.html#method_daily" class="">daily()</a><br />
-                                                                    <a href="../classes/Statistics.html#method_employees" class="">employees()</a><br />
+                                                                    <a href="../classes/Statistics.html#method_actors" class="">actors()</a><br />
                                                                     <a href="../classes/Statistics.html#method_verbs" class="">verbs()</a><br />
                                                                     <a href="../classes/Statistics.html#method_activities" class="">activities()</a><br />
                                                             </section>
@@ -204,7 +204,7 @@
                                                                     <em>No protected methods found</em>
                                                             </section>
                             <section class="span4">
-                                                                    <a href="../classes/Report.html#property_version" class="">$version</a><br />
+                                                                    <em>No protected properties found</em>
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -215,7 +215,7 @@
                                                                     <em>No private methods found</em>
                                                             </section>
                             <section class="span4">
-                                                                    <em>No private properties found</em>
+                                                                    <a href="../classes/Report.html#property_version" class="">$version</a><br />
                                                             </section>
                             <section class="span4">
                                 <em>N/A</em>
@@ -230,7 +230,7 @@
                         <dt>File</dt>
                             <dd><a href="../files/Statistics.php.html"><div class="path-wrapper">Statistics.php</div></a></dd>
                                                 <dt>Package</dt>
-                            <dd><div class="namespace-wrapper">\Report.Statistics</div></dd>
+                            <dd><div class="namespace-wrapper"></div></dd>
                                                 <dt>Class hierarchy</dt>
                             <dd class="hierarchy">
                                                                                                                                                                                                                                                                                                 
@@ -241,7 +241,9 @@
                         
                         
                         
-                        
+                                                                            <dt>See also</dt>
+                                                                                    <dd><a href=""><div class="namespace-wrapper">TEST_CONST</div></a></dd>
+                                                    
                                                                         </dl>
                     <h2>Tags</h2>
                     <table class="table table-condensed">
@@ -264,11 +266,13 @@
             <a id="property_response" name="property_response" class="anchor"></a>
             <article class="property">
                 <h3 class="public ">$response</h3>
-                <pre class="signature">$response</pre>
-                <p><em></em></p>
+                <pre class="signature">$response : \empty</pre>
+                <p><em>Response placeholder, will containt values returned from methods.</em></p>
                 
 
-                            </article>
+                                <h4>Type</h4>
+                \empty
+                                            </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -281,11 +285,11 @@
         </aside>
     </div>
 
-                                                    <div class="row-fluid">
+                                                                    <div class="row-fluid">
         <div class="span8 content class">
             <a id="property_version" name="property_version" class="anchor"></a>
             <article class="property">
-                <h3 class="protected ">$version</h3>
+                <h3 class="private ">$version</h3>
                 <pre class="signature">$version : string</pre>
                 <p><em>Tin Can Version number</em></p>
                 
@@ -307,7 +311,7 @@
         </aside>
     </div>
 
-                                            
+                            
                                     <a id="methods" name="methods"></a>
             <div class="row-fluid">
                 <div class="span8 content class"><h2>Methods</h2></div>
@@ -320,16 +324,16 @@
             <article class="method">
                 <h3 class="public ">__construct()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">__construct( <span class="argument">$lrs</span>)</pre>
-                <p><em>__constructor function</em></p>
+                <pre class="signature" style="margin-right: 54px;">__construct(object <span class="argument">$lrs</span>)</pre>
+                <p><em>__construct</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>object</td>
                                 <td>$lrs </td>
-                                <td></td>
+                                <td><p>TinCan object</p></td>
                             </tr>
                                             </table>
                 
@@ -342,7 +346,14 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -407,13 +418,16 @@
             <article class="method">
                 <h3 class="public ">all()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">all()</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">all() : \result</pre>
+                <p><em>method all()</em></p>
                 
 
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -421,7 +435,14 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -432,13 +453,16 @@
             <article class="method">
                 <h3 class="public ">monthly()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">monthly()</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">monthly() : \result</pre>
+                <p><em>method monthly()</em></p>
                 
 
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -446,7 +470,22 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>Figure out if we return monthly statements from this month, or 1 month back in time (eg. 30/31 days).</p>
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -457,13 +496,16 @@
             <article class="method">
                 <h3 class="public ">weekly()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">weekly()</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">weekly() : \result</pre>
+                <p><em>method weekly()</em></p>
                 
 
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -471,7 +513,22 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>Do we return everything from now till 7 days back, or everything in the current weeknumber?</p>
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -482,13 +539,16 @@
             <article class="method">
                 <h3 class="public ">daily()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">daily()</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">daily() : \result</pre>
+                <p><em>method daily()</em></p>
                 
 
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -496,32 +556,50 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                                                            <p>return evertyhing from 00:00 till NOW</p>
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
 
                                     <div class="row-fluid">
         <div class="span8 content class">
-            <a id="method_employees" name="method_employees" class="anchor"></a>
+            <a id="method_actors" name="method_actors" class="anchor"></a>
             <article class="method">
-                <h3 class="public ">employees()</h3>
+                <h3 class="public ">actors()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">employees( <span class="argument">$statements</span>)</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">actors(object <span class="argument">$statements</span>) : \result</pre>
+                <p><em>method actors()</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>object</td>
                                 <td>$statements </td>
-                                <td></td>
+                                <td><p>contains all statements</p></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -529,7 +607,14 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -540,21 +625,24 @@
             <article class="method">
                 <h3 class="public ">verbs()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">verbs( <span class="argument">$statements</span>)</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">verbs(object <span class="argument">$statements</span>) : \result</pre>
+                <p><em>method verbs()</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>object</td>
                                 <td>$statements </td>
-                                <td></td>
+                                <td><p>contains all statements</p></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -562,7 +650,14 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -573,21 +668,24 @@
             <article class="method">
                 <h3 class="public ">activities()</h3>
                 <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
-                <pre class="signature" style="margin-right: 54px;">activities( <span class="argument">$statements</span>)</pre>
-                <p><em></em></p>
+                <pre class="signature" style="margin-right: 54px;">activities(object <span class="argument">$statements</span>) : \result</pre>
+                <p><em>method activities()</em></p>
                 
 
                                     <h4>Parameters</h4>
                     <table class="table table-condensed table-hover">
                                                     <tr>
-                                <td></td>
+                                <td>object</td>
                                 <td>$statements </td>
-                                <td></td>
+                                <td><p>contains all statements</p></td>
                             </tr>
                                             </table>
                 
                 
-                            </article>
+                                    <h4>Returns</h4>
+                    \result
+                                            &mdash; <p>response object</p>
+                                                </article>
         </div>
         <aside class="span4 detailsbar">
             <h1><i class="icon-arrow-down"></i></h1>
@@ -595,7 +693,14 @@
                                                                             </dl>
             <h2>Tags</h2>
             <table class="table table-condensed">
-                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                                    <tr>
+                        <th>
+                            method
+                        </th>
+                        <td>
+                                                                                            
+                                                    </td>
+                    </tr>
                             </table>
         </aside>
     </div>
@@ -649,7 +754,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on May 2nd, 2014 at 13:37.
+                    on May 2nd, 2014 at 16:01.
                 </section>
             </section>
         </section>

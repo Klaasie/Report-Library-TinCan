@@ -1,23 +1,49 @@
 <?php
 /**
- * Class Report.Statistics
+ * This is a php report library.
  *
- * This class is used to retrieve statistics about the statements.
+ * This PHP Report Library can be used in combination with a Learning Record Store
+ * to retrieve, analyse and display the records.
  *
- * @package     Report.Statistics
+ * @package Report.Statistics
+ * @author Klaas Poortinga
+ * @version 0.1
+ *
+ * @todo Develop a settings page
  */
+
+/** 
+  * this class extends Report class.
+  *
+  * The Statistics class provides the ability to quickly query the LRS.
+  *
+  * @see Report, TEST_CONST
+  */
 class Statistics extends Report {
 
+    /**
+    * Response placeholder, will containt values returned from methods.
+    *
+    * @var empty $response
+    */
     public $response;
 
+    /**
+    * __construct
+    *
+    * @method __construct() __construct($lrs)
+    * @param object $lrs TinCan object
+    */
     public function __construct($lrs){
         //Do stuff.
         $this->lrs = $lrs;
     }
 
-    /*
-        Statistics->all()
-        Returns all time statistics.
+    /**
+    * method all()
+    *
+    * @method all()
+    * @return result object
     */
     public function all(){
         $result = $this->lrs->queryStatements([]);
@@ -29,6 +55,13 @@ class Statistics extends Report {
         Returns monthly statistics.
         @question: Should this return everything one month from now, 
                    Or just everything from the current month?
+    */
+    /**
+    * method monthly()
+    *
+    * @method monthly()
+    * @return result response object
+    * @todo Figure out if we return monthly statements from this month, or 1 month back in time (eg. 30/31 days).
     */
     public function monthly(){
         $objDate = new DateTime('-1 month');
@@ -43,42 +76,54 @@ class Statistics extends Report {
         return $this->response;
     }
 
-    /*
-        Statistics->weekly()
-        Returns weekly statistics.
+    /**
+    * method weekly()
+    *
+    * @method weekly()
+    * @return result response object
+    * @todo Do we return everything from now till 7 days back, or everything in the current weeknumber?
     */
     public function weekly(){
         $result = $this->lrs->queryStatements([]);
         return $result;
     }
 
-    /*
-        Statistics->daily()
-        Returns daily statistics.
+    /**
+    * method daily()
+    *
+    * @method daily()
+    * @return result response object
+    * @todo return evertyhing from 00:00 till NOW
     */
     public function daily(){
         $result = $this->lrs->queryStatements([]);
         return $result;
     }
 
-    /*
-        Statistics->employees($statements)
-        Returns employees statistics.
+    /**
+    * method actors()
+    *
+    * @method actors()
+    * @param object $statements contains all statements
+    * @return result response object
     */
-    public function employees($statements){ //ACTORS
-        $employees = array();
+    public function actors($statements){ //ACTORS
+        $actors = array();
         foreach($statements as $statement):
-            if(!array_key_exists($statement->actor->mbox, $employees)){
-                $employees[$statement->actor->mbox] = $statement->actor;
+            if(!array_key_exists($statement->actor->mbox, $actors)){
+                $actors[$statement->actor->mbox] = $statement->actor;
             }
         endforeach;
-        array_filter($employees);
-        return $employees;
+        array_filter($actors);
+        return $actors;
     }
 
-    /*
-        Statistics->verbs($statements)
-        Returns verbs statistics.
+    /**
+    * method verbs()
+    *
+    * @method verbs()
+    * @param object $statements contains all statements
+    * @return result response object
     */
     public function verbs($statements){
         $verbs = array();
@@ -89,9 +134,12 @@ class Statistics extends Report {
         return $verbs;
     }
 
-    /*
-        Statistics->activities($statements)
-        Returns activities statistics.
+    /**
+    * method activities()
+    *
+    * @method activities()
+    * @param object $statements contains all statements
+    * @return result response object
     */
     public function activities($statements){
         $activities = array();

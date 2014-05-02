@@ -6,7 +6,7 @@
     $report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
     $response = $report->Statistics->monthly();
 
-    var_dump($report->Statistics->employees($response->statements));
+    var_dump($report->Statistics->actors($response->statements));
 
     //var_dump($response->httpResponse);
 
@@ -129,9 +129,9 @@
 
             <div class="statistics-block blue">
                 <div class="statstistics-block-value">
-                    <?php echo count($report->Statistics->employees($response->statements)); ?>
+                    <?php echo count($report->Statistics->actors($response->statements)); ?>
                 </div>
-                <div class="statistics-block-title">Monthly Employees</div>
+                <div class="statistics-block-title">Monthly Actors</div>
             </div>
 
             <div class="statistics-block orange">

@@ -54,14 +54,14 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         @todo
         Check for all 3 if it actually returns the specific function. Right now it just checks if the array is correctly filtered.
     */
-    public function testEmployees(){
+    public function testActors(){
         // Act
         $test= $this->report->Statistics->monthly();
-        $employees = $this->report->Statistics->employees($test->statements);
-        $number = count($employees);
+        $actors = $this->report->Statistics->actors($test->statements);
+        $number = count($actors);
 
         // Assert
-        $this->assertEquals($number, count(array_filter($employees)));
+        $this->assertEquals($number, count(array_filter($actors)));
 
     }
 

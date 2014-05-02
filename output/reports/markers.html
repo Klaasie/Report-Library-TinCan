@@ -59,12 +59,12 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="../reports/errors.html">
-                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">14</span>
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="../reports/markers.html">
-                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">4</span>
                                 </a>
                             </li>
                             <li>
@@ -88,7 +88,9 @@
         <div class="span2 sidebar">
             <ul class="side-nav nav nav-list">
                 <li class="nav-header">Navigation</li>
-                                                                                                                                                            </ul>
+                                                                        <li><a href="#Report.php"><i class="icon-file"></i> Report.php</a></li>
+                                                                                                <li><a href="#Statistics.php"><i class="icon-file"></i> Statistics.php</a></li>
+                                                                    </ul>
         </div>
 
         <div class="span10 offset2">
@@ -98,10 +100,63 @@
                 <li>Markers</li>
             </ul>
 
-                            <div class="alert alert-info">No markers have been found in this project.</div>
             
             <div id="marker-accordion">
-                                                                                                    </div>
+                                                            <div class="package-contents">
+                            <a name="Report.php" id="Report.php"></a>
+                            <h3>
+                            <i class="icon-file"></i>
+                                Report.php
+                                <small style="float: right;padding-right: 10px;">1</small>
+                            </h3>
+                            <div>
+                                <table class="table markers table-bordered">
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Line</th>
+                                        <th>Description</th>
+                                    </tr>
+                                                                            <tr>
+                                            <td>TODO</td>
+                                            <td>28</td>
+                                            <td>Develop a settings page</td>
+                                        </tr>
+                                                                    </table>
+                            </div>
+                        </div>
+                                                                                <div class="package-contents">
+                            <a name="Statistics.php" id="Statistics.php"></a>
+                            <h3>
+                            <i class="icon-file"></i>
+                                Statistics.php
+                                <small style="float: right;padding-right: 10px;">3</small>
+                            </h3>
+                            <div>
+                                <table class="table markers table-bordered">
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Line</th>
+                                        <th>Description</th>
+                                    </tr>
+                                                                            <tr>
+                                            <td>TODO</td>
+                                            <td>66</td>
+                                            <td>Figure out if we return monthly statements from this month, or 1 month back in time (eg. 30/31 days).</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>TODO</td>
+                                            <td>86</td>
+                                            <td>Do we return everything from now till 7 days back, or everything in the current weeknumber?</td>
+                                        </tr>
+                                                                            <tr>
+                                            <td>TODO</td>
+                                            <td>98</td>
+                                            <td>return evertyhing from 00:00 till NOW</td>
+                                        </tr>
+                                                                    </table>
+                            </div>
+                        </div>
+                                                </div>
         </div>
     </section>
 
@@ -141,7 +196,7 @@
                 <section class="span10 offset1">
                     <hr />
                     Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
-                    on May 2nd, 2014 at 13:37.
+                    on May 2nd, 2014 at 16:01.
                 </section>
             </section>
         </section>

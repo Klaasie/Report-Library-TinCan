@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is a php report library.
  *
@@ -13,11 +14,16 @@
  */
 
 /**
- * Class Report
+ * This is a php report library.
  *
- * The class below initialises all methods for the Report Library.
+ * This PHP Report Library can be used in combination with a Learning Record Store
+ * to retrieve, analyse and display the records.
  *
  * @package Report
+ * @author Klaas Poortinga
+ * @version 0.1
+ *
+ * @todo Develop a settings page
  */
 class Report {
 
@@ -26,7 +32,7 @@ class Report {
     *
     * @var string $version
     */
-    protected $version = '1.0.1';
+    private $version = '1.0.1';
 
     /**
     * __constructor function
