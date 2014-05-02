@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'TinCan\\' => array($vendorDir . '/rusticisoftware/tincan/src'),
+    'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
 );

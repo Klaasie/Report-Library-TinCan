@@ -1,5 +1,11 @@
 <?php
-require_once('Report.php');
+/**
+ * Class Report.Statistics
+ *
+ * This class is used to retrieve statistics about the statements.
+ *
+ * @package     Report.Statistics
+ */
 class Statistics extends Report {
 
     public $response;
@@ -21,6 +27,8 @@ class Statistics extends Report {
     /*
         Statistics->monthly()
         Returns monthly statistics.
+        @question: Should this return everything one month from now, 
+                   Or just everything from the current month?
     */
     public function monthly(){
         $objDate = new DateTime('-1 month');
@@ -60,8 +68,9 @@ class Statistics extends Report {
     public function employees($statements){ //ACTORS
         $employees = array();
         foreach($statements as $statement):
-            // IF !array_key_exists
-            $employees[$statement->actor->mbox] = $statement->actor;
+            if(!array_key_exists($statement->actor->mbox, $employees)){
+                $employees[$statement->actor->mbox] = $statement->actor;
+            }
         endforeach;
         array_filter($employees);
         return $employees;

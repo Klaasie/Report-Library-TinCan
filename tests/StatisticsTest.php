@@ -62,7 +62,6 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
 
         // Assert
         $this->assertEquals($number, count(array_filter($employees)));
-        $this->
 
     }
 
