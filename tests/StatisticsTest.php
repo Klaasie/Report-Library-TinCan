@@ -12,6 +12,7 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->report = new Report();
         // Connecting to public LRS.
         $this->report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
+        //$this->report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
     }
 
     public function tearDown(){
@@ -65,33 +66,28 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
     public function testActors(){
         // Act
         $test = $this->report->Statistics->monthly()->actors();
-        $number = $test->count();
+        $number = $test->getCount();
 
         // Assert
-        $this->assertEquals($number, count(array_filter($actors->actors)));
-
+        $this->assertEquals($number, count(array_filter($test->response->actors)));
     }
 
         public function testVerbs(){
         // Act
-        $test= $this->report->Statistics->monthly();
-        $verbs = $this->report->Statistics->verbs($test->statements);
-        $number = count($verbs);
+        $test= $this->report->Statistics->monthly()->verbs();
+        $number = $test->getCount();
 
         // Assert
-        $this->assertEquals($number, count(array_filter($verbs)));
-
+        $this->assertEquals($number, count(array_filter($test->response->verbs)));
     }
 
         public function testActivities(){
         // Act
-        $test= $this->report->Statistics->monthly();
-        $activities = $this->report->Statistics->activities($test->statements);
-        $number = count($activities);
+        $test= $this->report->Statistics->monthly()->activities();
+        $number = $test->getCount();
 
         // Assert
-        $this->assertEquals($number, count(array_filter($activities)));
-
+        $this->assertEquals($number, count(array_filter($test->response->activities)));
     }
 }
 

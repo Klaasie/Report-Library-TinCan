@@ -11,6 +11,7 @@
  *
  * @todo Develop a settings page
  * @todo getMonth($month) method
+ * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
  */
 
 /** 
@@ -123,14 +124,39 @@ class Statistics extends Report {
     *
     * @method actors()
     * @return Returns object with actors information
+    * @todo Handle the actor->account type correctly. array_key_exists first param doesn't take object.
     */
     public function actors(){ //ACTORS
         $actors = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
-            if(!array_key_exists($statement->actor->mbox, $actors)){
-                $actors[$statement->actor->mbox] = $statement->actor;
+            //An actor can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
+            if(array_key_exists('mbox', $statement->actor)){
+                $type = "mbox";
+            }else if(array_key_exists('mbox_sha1sum', $statement->actor)){
+                $type = "mbox_sha1sum";
+            }else if(array_key_exists('openid', $statement->actor)){
+                $type = "openid";
+            }else{
+                $type = "account";
             }
+
+            // Extra check since a type "account" requires a different approach.
+            if($type != "account"){
+                // Extra check to see if actor->type is set.
+                if(isset($statement->actor->$type)){
+                    if(!array_key_exists($statement->actor->$type, $actors)){
+                        $actors[$statement->actor->$type] = $statement->actor;
+                    }
+                }
+            }else{
+                if(isset($statement->actor->$type->name)){
+                    if(!array_key_exists($statement->actor->$type->name, $actors)){
+                        $actor[$statement->actor->$type->name] = $statement->actor;
+                    }
+                }
+            }
+            
         endforeach;
         array_filter($actors);
 
@@ -153,8 +179,11 @@ class Statistics extends Report {
         $verbs = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
-            if(!array_key_exists($statement->verb->id, $verbs)){
-                $verbs[$statement->verb->id] = $statement->verb;
+            // Extra check to see if verb->id is set.
+            if(isset($statement->verb->id)){
+                if(!array_key_exists($statement->verb->id, $verbs)){
+                    $verbs[$statement->verb->id] = $statement->verb;
+                }
             }
         endforeach;
         array_filter($verbs);
@@ -178,8 +207,11 @@ class Statistics extends Report {
         $activities = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
-            if(!array_key_exists($statement->object->id, $activities)){
-                $activities[$statement->object->id] = $statement->object;
+            //Extra check if object->id is set, this one is required but apparently not in the public LRS.
+            if(isset($statement->object->id)){
+                if(!array_key_exists($statement->object->id, $activities)){
+                    $activities[$statement->object->id] = $statement->object;
+                }
             }
         endforeach;
         array_filter($activities);
