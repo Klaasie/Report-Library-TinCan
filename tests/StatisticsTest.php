@@ -1,14 +1,17 @@
 <?php 
-
+/** 
+ *@todo Guide to connect to your own LRS here.
+ */
 class StatisticsTest extends PHPUnit_Framework_TestCase {
 
     // Arrange
     private $report;
 
     public function setUp(){
-        //Set up the report class here.
+        //Set up the report class.
         $this->report = new Report();
-        $this->report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
+        // Connecting to public LRS.
+        $this->report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
     }
 
     public function tearDown(){
@@ -17,37 +20,42 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testAll(){
-        // Act
+        // Act: get all statistics
         $test = $this->report->Statistics->all();
 
         // Assert
-        $this->assertTrue($test->success);
+        $this->assertTrue(isset($test)); // Check if query was a success.
+        $this->assertTrue($test->response->success); // Second check
+        $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
     public function testMonthly(){
-        // Act
+        // Act: get monthly statistics
         $test = $this->report->Statistics->monthly();
-        $date = new DateTime('-1 month');
 
         // Assert
-        $this->assertTrue($test->success); //Check if query was a success.
-        $this->assertGreaterThan(0, count($test->statements)); //Check if at least 1 statement is being returned.
+        $this->assertTrue(isset($test)); // Check if query was a success.
+        $this->assertTrue($test->response->success); // Second check
+        $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
     public function testWeekly(){
-        // Act
-        //$test = $this->report->Statistics->weekly();
+        // Act: get weekly statistics
+        $test = $this->report->Statistics->weekly();
 
         // Assert
-        //$this->assertTrue($test->success);
+        $this->assertTrue(isset($test)); // Check if query was a success.
+        $this->assertTrue($test->response->success); // Second check
+        $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
     public function testDaily(){
-        // Act
-        //$test = $this->report->Statistics->daily();
+        // Act: get daily statistics
+        $test = $this->report->Statistics->daily();
 
         // Assert
-        // $this->assertTrue($test->success);
+        $this->assertTrue(isset($test)); // Check if query was a success.
+        $this->assertTrue($test->response->success); // Second check
     }
 
     /**
@@ -56,12 +64,11 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
     */
     public function testActors(){
         // Act
-        $test= $this->report->Statistics->monthly();
-        $actors = $this->report->Statistics->actors($test->statements);
-        $number = count($actors);
+        $test = $this->report->Statistics->monthly()->actors();
+        $number = $test->count();
 
         // Assert
-        $this->assertEquals($number, count(array_filter($actors)));
+        $this->assertEquals($number, count(array_filter($actors->actors)));
 
     }
 

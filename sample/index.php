@@ -6,7 +6,21 @@
     $report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
     $response = $report->Statistics->monthly();
 
-    var_dump($report->Statistics->actors($response->statements));
+    $test = new TinCan\RemoteLRS('http://learninglocker.banetworks.nl/data/xAPI/','1.0.1','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
+    $statement = $test->queryStatements(['limit' => 1]);
+    //$statementAgent = $statement->retrieveAgentProfile();
+
+    var_dump($statement->content);
+
+
+    // echo $report->Statistics->monthly()->actors()->getCount();
+
+    //var_dump($response);
+
+    //$response = $report->Statistics->monthly();
+
+    //$report->Statistics->actors($response->statements);
+    //$report->Statistics->monthly()->actors()->getCount();
 
     //var_dump($response->httpResponse);
 
@@ -23,6 +37,10 @@
 
     //$response = $report->Statistics->all();
     //var_dump($response->success);
+
+    // @todo: 
+    // Add rate function
+    // Add time of statement (prefarably in x seconds/minutes/hours ago.)
 ?>
 
 
@@ -122,28 +140,28 @@
             </div>
             <div class="statistics-block green">
                 <div class="statstistics-block-value">
-                    <?php echo $response->count; ?>
+                    <?php echo $report->Statistics->monthly()->getCount(); ?>
                 </div>
                 <div class="statistics-block-title">Monthly Statements</div>
             </div>
 
             <div class="statistics-block blue">
                 <div class="statstistics-block-value">
-                    <?php echo count($report->Statistics->actors($response->statements)); ?>
+                    <?php echo $report->Statistics->monthly()->actors()->getCount(); ?>
                 </div>
                 <div class="statistics-block-title">Monthly Actors</div>
             </div>
 
             <div class="statistics-block orange">
                 <div class="statstistics-block-value">
-                    <?php echo $response->count; ?>
+                    <?php echo $report->Statistics->monthly()->verbs()->getCount(); ?>
                 </div>
                 <div class="statistics-block-title">Monthly verbs</div>
             </div>
 
             <div class="statistics-block red">
                 <div class="statstistics-block-value">
-                    <?php echo $response->count; ?>
+                    <?php echo $report->Statistics->monthly()->activities()->getCount(); ?>
                 </div>
                 <div class="statistics-block-title">Monthly activities</div>
             </div>
@@ -153,7 +171,7 @@
             /*
             List of all the statements
             */
-            foreach( $response->statements as $statement):
+            foreach($report->Statistics->monthly()->getStatements() as $statement):
                 // var_dump($statement); exit;
                 // echo '<br /><br />';
         ?>

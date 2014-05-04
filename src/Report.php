@@ -1,16 +1,7 @@
 <?php
 
 /**
- * This is a php report library.
- *
- * This PHP Report Library can be used in combination with a Learning Record Store
- * to retrieve, analyse and display the records.
- *
- * @package Report
- * @author Klaas Poortinga
- * @version 0.1
- *
- * @todo Develop a settings page
+ * 
  */
 
 /**
@@ -24,6 +15,7 @@
  * @version 0.1
  *
  * @todo Develop a settings page
+ * @todo Support method chaining
  */
 class Report {
 
