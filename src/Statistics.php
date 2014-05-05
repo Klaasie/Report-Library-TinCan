@@ -12,6 +12,7 @@
  * @todo Develop a settings page
  * @todo getMonth($month) method
  * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
+ * @todo Create a limit, queries that are too big take long to display.
  */
 
 /** 
@@ -162,7 +163,7 @@ class Statistics extends Report {
 
         // Setting new response object.
         $this->response = new stdClass();
-        //$this->response->statements = $statements; // Do we want this?
+        $this->response->statements = $statements;
         $this->response->actors = $actors;
         $this->response->count = count($actors);
 
@@ -190,7 +191,7 @@ class Statistics extends Report {
 
         // Setting new response object.
         $this->response = new stdClass();
-        //$this->response->statements = $statements; // Do we want this?
+        $this->response->statements = $statements;
         $this->response->verbs = $verbs;
         $this->response->count = count($verbs);
 
@@ -218,7 +219,7 @@ class Statistics extends Report {
 
         // Setting new response object.
         $this->response = new stdClass();
-        //$this->response->statements = $statements; // Do we want this?
+        $this->response->statements = $statements;
         $this->response->activities = $activities;
         $this->response->count = count($activities);
 
