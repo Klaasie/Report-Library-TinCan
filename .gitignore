@@ -6,3 +6,6 @@ vendor/*
 
 # good.
 !vendor/rusticisoftware
+!sample/site/
+!sample/css/
+!sample/js/
