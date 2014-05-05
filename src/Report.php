@@ -1,10 +1,6 @@
 <?php
 
 /**
- * 
- */
-
-/**
  * This is a php report library.
  *
  * This PHP Report Library can be used in combination with a Learning Record Store
