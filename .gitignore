@@ -1,7 +1,7 @@
 # bad.
 .DS_Store
-sample/
-output/
+sample/*
+output/*
 vendor/*
 
 # good.
