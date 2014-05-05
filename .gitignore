@@ -2,3 +2,7 @@
 .DS_Store
 sample/
 output/
+vendor/*
+
+# good.
+!vendor/rusticisoftware
