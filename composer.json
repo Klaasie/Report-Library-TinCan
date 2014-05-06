@@ -1,6 +1,6 @@
 {
-    "name": "klaaspoortinga/report",
-    "description": "Tin Can Report tool",
+    "name": "klaaspoortinga/report-library",
+    "description": "Tin Can Report Library",
     "license": "MIT",
     "authors": [
         {
