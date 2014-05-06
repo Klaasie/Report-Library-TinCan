@@ -250,7 +250,7 @@ class Statistics extends Report {
     * method getStatements()
     *
     * @method getStatements()
-    * @param datetime / timestamp $datetime A datetime or timestamp value
+    * @param datetime $datetime A datetime or timestamp value
     * @param bool $full 
     * @return String of elapsed time
     */
