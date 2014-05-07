@@ -1,10 +1,11 @@
-<?php include 'header.php'; ?>
-<?php $view = 'actor view'; ?>
-<?php
-    /*
-     * Picked this email address since it's a pretty common one.
-     */
-    $response = $report->Statistics->actors('tincanjs-github@tincanapi.com');
+<?php 
+include 'header.php';
+$view = 'actor view';
+
+/*
+ * Picked this email address since it's a pretty common one.
+ */
+$response = $report->Statistics->actors('tincanjs-github@tincanapi.com');
 ?>
 <div class="container-fluid">
         <div class="row">

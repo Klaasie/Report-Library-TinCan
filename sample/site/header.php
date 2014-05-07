@@ -7,9 +7,6 @@ $report = new Report();
  * Add your own LRS here (or use the public LRS)
  */
 $report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
-$response = $report->Statistics->daily();
-
-
 ?>
 <html lang="en">
 <head>

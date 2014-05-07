@@ -1,5 +1,7 @@
-<?php include 'header.php'; ?>
-<?php $view = 'trainer view'; ?>
+<?php
+include 'header.php';
+$view = 'trainer view';
+?>
 <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
