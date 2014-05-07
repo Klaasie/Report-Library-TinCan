@@ -1,7 +1,10 @@
 <?php include 'header.php'; ?>
 <?php $view = 'actor view'; ?>
 <?php
-    $response = $report->Statistics->actors('klaas.poortinga@brightalley.nl');
+    /*
+     * Picked this email address since it's a pretty common one.
+     */
+    $response = $report->Statistics->actors('tincanjs-github@tincanapi.com');
 ?>
 <div class="container-fluid">
         <div class="row">

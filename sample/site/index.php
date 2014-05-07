@@ -16,7 +16,7 @@
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->getCount(); ?> </h4>
-                                <span class="">Monthly Statements</span>
+                                <span class="">Daily Statements</span>
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->actors()->getCount(); ?> </h4>
-                                <span class="">Monthly Actors</span>
+                                <span class="">Daily Actors</span>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->verbs()->getCount(); ?> </h4>
-                                <span class="">Monthly Verbs</span>
+                                <span class="">Daily Verbs</span>
                             </div>
                         </div>
                     </div>
@@ -65,6 +65,12 @@
                                         <?php
                                             if(isset($statement->actor->name)):
                                                 echo $statement->actor->name . ' ';
+                                            elseif(isset($statement->actor->account)):
+                                                if(isset($statement->actor->account->name)):
+                                                    echo $statement->actor->account->name . ' ';
+                                                else:
+                                                    echo $statement->actor->account->homePage . ' ';
+                                                endif;
                                             else:
                                                 echo $statement->actor->mbox . ' ';
                                             endif;

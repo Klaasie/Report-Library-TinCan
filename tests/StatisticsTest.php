@@ -12,7 +12,6 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->report = new Report();
         // Connecting to public LRS.
         $this->report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
-        //$this->report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
     }
 
     public function tearDown(){

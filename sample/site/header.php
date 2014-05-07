@@ -3,20 +3,13 @@ require '../../vendor/autoload.php';
 
 $report = new Report();
 
-$report->connectLrs('http://learninglocker.banetworks.nl/data/xAPI/','6e4cd6f48be6114142e4f480ba79831aef335f27','dd45015eedb66a514a2ce566ab3af8e11f656da7');
-//$response = $report->Statistics->monthly()->actors();
+/*
+ * Add your own LRS here (or use the public LRS)
+ */
+$report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
+$response = $report->Statistics->daily();
 
-//$report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
-$response = $report->Statistics->monthly();
 
-
-function cmp($a, $b)
-{
-    if ($a['count'] == $b['count']) {
-        return 0;
-    }
-    return ($a['count'] > $b['count']) ? -1 : 1;
-}
 ?>
 <html lang="en">
 <head>
