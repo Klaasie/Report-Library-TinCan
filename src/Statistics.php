@@ -244,7 +244,8 @@ class Statistics extends Report {
     * method getCount()
     *
     * @method getCount()
-    * @return Returns count of statements
+    * @return Returns count of previous method
+    * @todo Is it clear what is returned here?
     */
     public function getCount(){
         return $this->response->count;
