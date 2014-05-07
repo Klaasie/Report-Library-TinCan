@@ -10,7 +10,7 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Dashboard / <?php echo $view; ?></h1>
                 <div class="col-md-12"><div id="collapsible"></div></div>
-                Under construction
+                No content yet.
             </div>
         </div>
     </div>

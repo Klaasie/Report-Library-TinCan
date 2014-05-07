@@ -122,49 +122,55 @@ class Statistics extends Report {
     * method actors()
     *
     * @method actors()
+    * @param null $email query on an actor specific
     * @return Returns object with actors information
     * @todo Enable function to query specific actor
     * @todo This function should do a query when no statements are set.
     */
-    public function actors(){
-        $actors = array();
-        $statements = $this->response->statements;
-        foreach($statements as $statement):
-            //An actor can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
-            if(array_key_exists('mbox', $statement->actor)){
-                $type = "mbox";
-            }else if(array_key_exists('mbox_sha1sum', $statement->actor)){
-                $type = "mbox_sha1sum";
-            }else if(array_key_exists('openid', $statement->actor)){
-                $type = "openid";
-            }else{
-                $type = "account";
-            }
+    public function actors($email = null){
+        if($email == null && $this->response->statements){
+            $actors = array();
+            $statements = $this->response->statements;
+            foreach($statements as $statement):
+                // An actor can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
+                if(array_key_exists('mbox', $statement->actor)){
+                    $type = "mbox";
+                }else if(array_key_exists('mbox_sha1sum', $statement->actor)){
+                    $type = "mbox_sha1sum";
+                }else if(array_key_exists('openid', $statement->actor)){
+                    $type = "openid";
+                }else{
+                    $type = "account";
+                }
 
-            // Extra check since a type "account" requires a different approach.
-            if($type != "account"){
-                // Extra check to see if actor->type is set.
-                if(isset($statement->actor->$type)){
-                    if(!array_key_exists($statement->actor->$type, $actors)){
-                        $actors[$statement->actor->$type] = $statement->actor;
+                // Extra check since a type "account" requires a different approach.
+                if($type != "account"){
+                    // Extra check to see if actor->type is set.
+                    if(isset($statement->actor->$type)){
+                        if(!array_key_exists($statement->actor->$type, $actors)){
+                            $actors[$statement->actor->$type] = $statement->actor;
+                        }
+                    }
+                }else{
+                    if(isset($statement->actor->$type->name)){
+                        if(!array_key_exists($statement->actor->$type->name, $actors)){
+                            $actor[$statement->actor->$type->name] = $statement->actor;
+                        }
                     }
                 }
-            }else{
-                if(isset($statement->actor->$type->name)){
-                    if(!array_key_exists($statement->actor->$type->name, $actors)){
-                        $actor[$statement->actor->$type->name] = $statement->actor;
-                    }
-                }
-            }
-            
-        endforeach;
-        array_filter($actors);
+                
+            endforeach;
+            array_filter($actors);
+        }else{
+            // $email is set and $this->response->statements is not, which means we still have to do a query.
+            $result = $this->lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => 'mailto:' . $email ))]);
+            $content = json_decode($result->httpResponse['_content']);
 
-        // Setting new response object.
-        $this->response = new stdClass();
-        $this->response->statements = $statements;
-        $this->response->actors = $actors;
-        $this->response->count = count($actors);
+            $this->response = new stdClass();
+            $this->response->success = $result->success;
+            $this->response->statements = $content->statements;
+            $this->response->count = count($content->statements);
+        }
 
         return $this;
     }

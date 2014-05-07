@@ -59,7 +59,7 @@ function cmp($a, $b)
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.php">Manager</a></li>
-                    <li><a href="trainer.php">Trainer</a></li>
+                    <!--<li><a href="trainer.php">Trainer</a></li>-->
                     <li><a href="actor.php">Actor</a></li>
                     <li><a href="help.php">Help</a></li>
                 </ul>

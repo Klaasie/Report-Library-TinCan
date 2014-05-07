@@ -1,5 +1,8 @@
 <?php include 'header.php'; ?>
 <?php $view = 'actor view'; ?>
+<?php
+    $response = $report->Statistics->actors('klaas.poortinga@brightalley.nl');
+?>
 <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
@@ -10,7 +13,53 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Dashboard / <?php echo $view; ?></h1>
                 <div class="col-md-12"><div id="collapsible"></div></div>
-                Under construction
+                <h2>Timeline</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($response->getStatements() as $statement): ?>
+                                <tr>
+                                    <td class="first">
+                                        <?php
+                                            if(isset($statement->actor->name)):
+                                                echo $statement->actor->name . ' ';
+                                            else:
+                                                echo $statement->actor->mbox . ' ';
+                                            endif;
+
+                                            if(isset($statement->verb->display->{"en-US"})):
+                                                echo $statement->verb->display->{'en-US'} .' ';
+                                            else:
+                                                echo $statement->verb->id . ' ';
+                                            endif;
+
+                                            if(isset($statement->object->definition->name->{"en-US"})):
+                                                echo $statement->object->definition->name->{"en-US"};
+                                            else:
+                                                echo $statement->object->id;
+                                            endif;
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <i>
+                                            <?php
+                                                if(isset($statement->timestamp)):
+                                                    echo $response->getTimeElapsedString($statement->timestamp);
+                                                endif;
+                                            ?>
+                                        </i>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

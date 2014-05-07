@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <h2>Timeline</h2>
+                <h2>Newsfeed</h2>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
