@@ -4,7 +4,7 @@ This is an very early draft of a Tin Can Report Library. Goal of this library is
 
 #### Getting started
 
-TinCanPHP is available via [Composer](http://getcomposer.org).
+Tin Can Report Library is available via [Composer](http://getcomposer.org).
 
 ```
 php composer.phar require klaaspoortinga/tin-can-report-library:dev-master
