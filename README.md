@@ -25,7 +25,3 @@ Retrieving statements is as easy as:
 For a demo go to http://report.klaasweb.nl
 
 Documentation: http://report.klaasweb.nl/phpdoc/classes/Report.html
-
-#### Troubleshooting
-
-This library uses DateTime, make sure it is set.
