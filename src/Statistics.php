@@ -124,8 +124,7 @@ class Statistics extends Report {
     * @method actors()
     * @param null $email query on an actor specific
     * @return Returns object with actors information
-    * @todo Enable function to query specific actor
-    * @todo This function should do a query when no statements are set.
+    * @todo Wonder if this function should be split up in actors() and getActors (to prevent the use of the if/else statement)
     */
     public function actors($email = null){
         if($email == null && $this->response->statements){
@@ -161,6 +160,12 @@ class Statistics extends Report {
                 
             endforeach;
             array_filter($actors);
+
+            // Setting new response object.
+            $this->response = new stdClass();
+            $this->response->statements = $statements;
+            $this->response->actors = $actors;
+            $this->response->count = count($actors);
         }else{
             // $email is set and $this->response->statements is not, which means we still have to do a query.
             $result = $this->lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => 'mailto:' . $email ))]);
