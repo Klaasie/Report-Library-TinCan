@@ -10,11 +10,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "rusticisoftware/tincan": "~0.0",
-        "phpdocumentor/phpdocumentor": "2.*"
+        "rusticisoftware/tincan": "~0.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "~4.0",
+        "phpdocumentor/phpdocumentor": "2.*"
     },
     "autoload": {
         "classmap": [

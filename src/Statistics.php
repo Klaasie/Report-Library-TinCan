@@ -13,7 +13,6 @@
  * @todo getMonth($month) method
  * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
  * @todo Create a limit, queries that are too big take long to display.
- * @todo Enable this library as composer package
  */
 
 /** 
