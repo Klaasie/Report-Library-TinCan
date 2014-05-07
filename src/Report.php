@@ -23,7 +23,7 @@ class Report {
     private $version = '1.0.1';
 
     /**
-    * __constructor function
+    * method __constructor()
     *
     * @method __construct()
     */
