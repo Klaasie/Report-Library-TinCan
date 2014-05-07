@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0a12c275efc1c0101b5724934f116d55",
+    "hash": "2ef7a204ca80b8858da69d7a808dbbc9",
     "packages": [
         {
             "name": "rusticisoftware/tincan",
@@ -887,12 +887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "8e56655fe57682fad1146b71a1d9127c5405c553"
+                "reference": "1b8928ca40eb84d249d7bb185e28b1895f2a55ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/8e56655fe57682fad1146b71a1d9127c5405c553",
-                "reference": "8e56655fe57682fad1146b71a1d9127c5405c553",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/1b8928ca40eb84d249d7bb185e28b1895f2a55ba",
+                "reference": "1b8928ca40eb84d249d7bb185e28b1895f2a55ba",
                 "shasum": ""
             },
             "require": {
@@ -975,7 +975,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2014-05-05 14:53:49"
+            "time": "2014-05-07 13:39:31"
         },
         {
             "name": "phpdocumentor/reflection",
