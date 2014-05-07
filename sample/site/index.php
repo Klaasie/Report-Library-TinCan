@@ -2,6 +2,9 @@
 include('header.php');
 $view = "manager view";
 
+/*
+ * Getting daily statements to reduce page load.
+ */
 $response = $report->Statistics->daily();
 ?>
     <div class="container-fluid">
