@@ -32,9 +32,9 @@ class Statistics extends Report {
     public $response;
 
     /**
-    * __construct
+    * method __construct()
     *
-    * @method __construct() __construct($lrs)
+    * @method __construct()
     * @param object $lrs TinCan object
     */
     public function __construct($lrs){
@@ -60,8 +60,6 @@ class Statistics extends Report {
 
     /**
     * method monthly()
-    *
-    *
     *
     * @method monthly()
     * @return Returns monthly statements
@@ -125,9 +123,10 @@ class Statistics extends Report {
     *
     * @method actors()
     * @return Returns object with actors information
-    * @todo Handle the actor->account type correctly. array_key_exists first param doesn't take object.
+    * @todo Enable function to query specific actor
+    * @todo This function should do a query when no statements are set.
     */
-    public function actors(){ //ACTORS
+    public function actors(){
         $actors = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
@@ -175,6 +174,8 @@ class Statistics extends Report {
     *
     * @method verbs()
     * @return Returns object with verbs information
+    * @todo Enable function to query specific verb
+    * @todo This function should do a query when no statements are set.
     */
     public function verbs(){
         $verbs = array();
@@ -203,6 +204,8 @@ class Statistics extends Report {
     *
     * @method activities()
     * @return Returns object with activity information
+    * @todo Enable function to query specific activity
+    * @todo This function should do a query when no statements are set.
     */
     public function activities(){
         $activities = array();
@@ -247,9 +250,9 @@ class Statistics extends Report {
     }
 
     /**
-    * method getStatements()
+    * method getTimeElapsedString()
     *
-    * @method getStatements()
+    * @method getTimeElapsedString()
     * @param datetime $datetime A datetime or timestamp value
     * @param bool $full 
     * @return String of elapsed time

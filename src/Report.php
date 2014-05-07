@@ -28,7 +28,7 @@ class Report {
     * @method __construct()
     */
     public function __construct(){
-        //Do stuff.
+
     }
 
     /**

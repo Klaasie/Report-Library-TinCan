@@ -60,9 +60,9 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-        @todo
-        Check for all 3 if it actually returns the specific function. Right now it just checks if the array is correctly filtered.
-    */
+     * @todo
+     * Check for all 3 if it actually returns the specific function. Right now it just checks if the array is correctly filtered.
+     */
     public function testActors(){
         // Act
         $test = $this->report->Statistics->monthly()->actors();
