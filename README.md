@@ -4,21 +4,31 @@ This is an very early draft of a Tin Can Report Library. Goal of this library is
 
 #### Getting started
 
-Clone the repository.
+TinCanPHP is available via [Composer](http://getcomposer.org).
 
-Add the autoloader to the page.
+```
+php composer.phar require klaaspoortinga/tin-can-report-library:dev-master
+```
 
-    require '/vendor/autoload.php';
+With the package installed require the Composer autoloader:
+
+```php
+require 'vendor/autoload.php';
+```
 
 Connect to your LRS using:
 
-    $lrs = new Report();
-    $lrs->connectLrs('lrs_endpoint','lrs_username','lrs_password');
+```php
+$lrs = new Report();
+$lrs->connectLrs('lrs_endpoint','lrs_username','lrs_password');
+```
 
 Retrieving statements is as easy as:
 
-    $response = $lrs->Statistics->monthly(); //Get monthly statistics
-    $response = $lrs->Statistics->monthly()->actors(); //Retrieves amount of monthly actors
+```php
+$response = $lrs->Statistics->monthly(); //Get monthly statistics
+$response = $lrs->Statistics->monthly()->actors(); //Retrieves amount of monthly actors
+```
 
 #### Information
 
