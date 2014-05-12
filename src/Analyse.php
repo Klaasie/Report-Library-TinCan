@@ -42,6 +42,12 @@ class Analyse extends Report {
                 }else{
                     $v[$item->object->id]['count'] += 1;
                 }
+            else:
+                // In this case the statement->actor is equal to the set user in Report::$agent
+                // We take this opportunity to unset statements that have been added while the actor has already done them.
+                if(isset($v[$item->object->id])){
+                    unset($v[$item->object->id]);
+                }
             endif;
 
             return $v;
