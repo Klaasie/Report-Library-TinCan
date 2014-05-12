@@ -11,6 +11,7 @@
  *
  * @todo Develop a settings page
  * @todo Option to make a TinCan\Agent - for situations where someone would login
+ * @todo Allow for ajax calls
  */
 class Report {
 
