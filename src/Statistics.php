@@ -1,26 +1,14 @@
 <?php
-/**
- * This is a php report library.
- *
- * This PHP Report Library can be used in combination with a Learning Record Store
- * to retrieve, analyse and display the records.
- *
- * @package Report.Statistics
- * @author Klaas Poortinga
- * @version 0.1
- *
- * @todo Develop a settings page
- * @todo getMonth($month) method
- * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
- * @todo Create a limit, queries that are too big take long to display.
- */
-
 /** 
   * this class extends Report class.
   *
   * The Statistics class provides the ability to quickly query the LRS.
   *
-  * @see Report
+  * @package Report
+  * @subpackage Statistics
+  * @todo getMonth($month) method
+  * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
+  * @todo Create a limit, queries that are too big take long to display. Note: Limit on public LRS is at 500. This takes roughly 3 - 5 seconds..
   */
 class Statistics extends Report {
 
