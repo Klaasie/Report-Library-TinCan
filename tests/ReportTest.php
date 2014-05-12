@@ -26,9 +26,9 @@ class ReportTest extends PHPUnit_Framework_TestCase {
 
         // Assert
         $this->assertTrue($result);
-        $this->assertEquals($auth, $this->report->lrs->getAuth());
-        $this->assertEquals($version, $this->report->lrs->getVersion());
-        $this->assertEquals($endpoint, $this->report->lrs->getEndpoint());
+        $this->assertEquals($auth, Report::$lrs->getAuth());
+        $this->assertEquals($version, Report::$lrs->getVersion());
+        $this->assertEquals($endpoint, Report::$lrs->getEndpoint());
     }
 
     public function testAddAgent(){
@@ -44,8 +44,8 @@ class ReportTest extends PHPUnit_Framework_TestCase {
         // Assert
         // Case 1: 
         $this->assertTrue($result);
-        $this->assertEquals('mailto:' . $email, $this->report->agent->getMbox());
-        $this->assertEquals($name, $this->report->agent->getName());
+        $this->assertEquals('mailto:' . $email, Report::$agent->getMbox());
+        $this->assertEquals($name, Report::$agent->getName());
 
         // Act
         // Case 2:
@@ -54,8 +54,8 @@ class ReportTest extends PHPUnit_Framework_TestCase {
         // Assert
         // Case 2:
         $this->assertTrue($result2);
-        $this->assertEquals('mailto:' . $email, $this->report->agent->getMbox());
-        $this->assertNull($this->report->agent->getName()); // Should return NULL since $name was not set.
+        $this->assertEquals('mailto:' . $email, Report::$agent->getMbox());
+        $this->assertNull(Report::$agent->getName()); // Should return NULL since $name was not set.
     }
 
 }

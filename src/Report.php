@@ -22,16 +22,30 @@ class Report {
     private $version = '1.0.1';
 
     /**
-    * Response placeholder, will containt values returned from methods.
+    * lrs placeholder, will containt lrs object.
     *
-    * @var empty $response
+    * @var empty $lrs
+    */
+    static $lrs;
+
+    /**
+    * agent placeholder, will containt agent object.
+    *
+    * @var empty $agent
+    */
+    static $agent;
+
+    /**
+    * Statistics placeholder, will be used for new Statistics()
+    *
+    * @var empty $Statistics
     */
     public $Statistics;
 
     /**
-    * Response placeholder, will containt values returned from methods.
+    * Analyse placeholder, will be used for new Analyse()
     *
-    * @var empty $response
+    * @var empty $Analyse
     */
     public $Analyse;
 
@@ -55,11 +69,35 @@ class Report {
     */
     public function connectLrs($lrs_endpoint, $lrs_username, $lrs_password){
         if($lrs_endpoint && $lrs_username && $lrs_password):
-            $this->lrs = new TinCan\RemoteLRS($lrs_endpoint, $this->version, $lrs_username, $lrs_password);
-            $this->Statistics = new Statistics($this->lrs);
-            $this->Analyse = new Analyse($this->lrs);
+            self::$lrs = new TinCan\RemoteLRS($lrs_endpoint, $this->version, $lrs_username, $lrs_password);
+            $this->Statistics = new Statistics();
+            $this->Analyse = new Analyse();
             return true;
         endif; 
+        return false;
+    }
+
+    /**
+    * Adds an agent to the object.
+    *
+    * This method adds a new agent to the object. This is particulary usefull for profile pages aswell as for
+    * analyse blocks.
+    *
+    * @method boolean addAgent($email, $name = NULL)
+    * @param string $email Actor email
+    * @param string $name Actor name default NULL
+    * @return bool
+    * @todo Check if "mailto:" is already set in the email string
+    */
+    public function addAgent($email, $name = NULL){
+        if(isset($email)){
+            $tcAgent = array(
+                    'mbox' => 'mailto:' . $email,
+                    'name' => $name
+                );
+            self::$agent = new TinCan\Agent($tcAgent);
+            return true;
+        }
         return false;
     }
 
