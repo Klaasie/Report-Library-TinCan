@@ -41,19 +41,21 @@ class ReportTest extends PHPUnit_Framework_TestCase {
         // Case 1:
         $result = $this->report->addAgent($email, $name);
 
+        // Assert
+        // Case 1: 
+        $this->assertTrue($result);
+        $this->assertEquals('mailto:' . $email, $this->report->agent->getMbox());
+        $this->assertEquals($name, $this->report->agent->getName());
+
+        // Act
         // Case 2:
         $result2 = $this->report->addAgent($email);
 
         // Assert
-        // Case 1: 
-        $this->assertTrue($result);
-        $this->assertEquals($email, $result->agent->getMbox());
-        $this->assertEquals($name, $result->agent->getName());
-
         // Case 2:
         $this->assertTrue($result2);
-        $this->assertEquals($email, $result2->agent->getMbox());
-        $this->assertNull($result2->agent->getName()); // Should return NULL since $name was not set.
+        $this->assertEquals('mailto:' . $email, $this->report->agent->getMbox());
+        $this->assertNull($this->report->agent->getName()); // Should return NULL since $name was not set.
     }
 
 }

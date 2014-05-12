@@ -11,6 +11,10 @@ table {
 
 }
 
+a {
+  word-wrap: break-word;
+}
+
 /*
  * Global add-ons
  */
