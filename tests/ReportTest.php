@@ -36,25 +36,39 @@ class ReportTest extends PHPUnit_Framework_TestCase {
         $email = 'tincanjs-github@tincanapi.com';
         $name = 'Tin Can';
 
+        // Case 1:
         // Act
         // Email is the only required variable here, having name set is more elegant in the output of the statement.
-        // Case 1:
         $result = $this->report->addAgent($email, $name);
 
+        // Case 1:
         // Assert
-        // Case 1: 
         $this->assertTrue($result);
         $this->assertEquals('mailto:' . $email, Report::$agent->getMbox());
         $this->assertEquals($name, Report::$agent->getName());
 
+        // Case 2:
         // Act
-        // Case 2:
-        $result2 = $this->report->addAgent($email);
+        $result = $this->report->addAgent($email);
 
-        // Assert
         // Case 2:
-        $this->assertTrue($result2);
+        // Assert
+        $this->assertTrue($result);
         $this->assertEquals('mailto:' . $email, Report::$agent->getMbox());
+        $this->assertNull(Report::$agent->getName()); // Should return NULL since $name was not set.
+
+        // Case 3:
+        // Set up
+        $email = 'mailto:tincanjs-github@tincanapi.com';
+
+        // Case 3:
+        // Act
+        $result = $this->report->addAgent($email);
+
+        // Case 3:
+        // Assert
+        $this->assertTrue($result);
+        $this->assertEquals($email, Report::$agent->getMbox()); // Checking if it doesn't add 'mailto:' to the string again.
         $this->assertNull(Report::$agent->getName()); // Should return NULL since $name was not set.
     }
 

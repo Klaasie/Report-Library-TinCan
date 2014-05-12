@@ -87,12 +87,16 @@ class Report {
     * @param string $email Actor email
     * @param string $name Actor name default NULL
     * @return bool
-    * @todo Check if "mailto:" is already set in the email string
+    * @todo Handle $agent->object
     */
     public function addAgent($email, $name = NULL){
+        if(stripos($email, 'mailto:') === false){
+            $email = 'mailto:' . $email;
+        }
+        
         if(isset($email)){
             $tcAgent = array(
-                    'mbox' => 'mailto:' . $email,
+                    'mbox' => $email,
                     'name' => $name
                 );
             self::$agent = new TinCan\Agent($tcAgent);
