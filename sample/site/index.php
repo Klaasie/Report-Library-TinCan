@@ -5,7 +5,7 @@ $view = "manager view";
 /*
  * Getting daily statements to reduce page load.
  */
-$response = $report->Statistics->daily();
+$response = $report->Statistics->monthly();
 ?>
     <div class="container-fluid">
         <div class="row">
@@ -14,7 +14,7 @@ $response = $report->Statistics->daily();
                     <li class="active"><a href="#">Overview</a></li>
                 </ul>
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
                 <h1 class="page-header">Dashboard / <?php echo $view; ?></h1>
                 <div class="col-md-12"><div id="collapsible"></div></div>
                 <div class="row placeholders">
@@ -108,6 +108,16 @@ $response = $report->Statistics->daily();
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2 sidebar-right">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Suggestions</div>
+                    <ul class="list-group">
+                        <?php foreach($report->Analyse->getSuggestions(5) as $suggestion => $value): ?>
+                            <li class="list-group-item"><a href="<?php echo $suggestion; ?>"><?php echo $value['title']; ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
         </div>
