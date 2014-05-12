@@ -13,10 +13,9 @@ class Analyse extends Report {
      * Method __construct()
      *
      * @method __construct()
-     * @param object $lrs Tin Can object
      */
-    public function __construct($lrs){
-        $this->lrs = $lrs;
+    public function __construct(){
+
     }
 
     /**
@@ -30,30 +29,31 @@ class Analyse extends Report {
      * @todo build in checks
      */
     public function getSuggestions($amount = NULL){
-        $result = $this->lrs->queryStatements([]);
+        $result = parent::$lrs->queryStatements([]);
         $statements = json_decode($result->httpResponse['_content']);
-
-        $test = array_reduce($statements->statements, function($v, $item){
-            if(!array_key_exists($item->object->id, $v)){
-                if(isset($item->object->definition->name->{"en-US"})){
-                    $name = $item->object->definition->name->{"en-US"};
+        $suggestions = array_reduce($statements->statements, function($v, $item){
+            if(!parent::$agent || $item->actor->mbox != parent::$agent->getMbox()):
+                if(!array_key_exists($item->object->id, $v)){
+                    if(isset($item->object->definition->name->{"en-US"})){
+                        $name = $item->object->definition->name->{"en-US"};
+                    }else{
+                        $name = $item->object->id;
+                    }
+                    $v[$item->object->id] = array('count' => 1, 'title' => $name);
                 }else{
-                    $name = $item->object->id;
+                    $v[$item->object->id]['count'] += 1;
                 }
-                $v[$item->object->id] = array('count' => 1, 'title' => $name);
-            }else{
-                $v[$item->object->id]['count'] += 1;
-            }
+            endif;
 
             return $v;
         }, array());
-        arsort($test);
+        arsort($suggestions);
 
         if($amount):
-            $test = array_slice($test, 0, $amount, true);
+            $suggestions = array_slice($suggestions, 0, $amount, true);
         endif;
 
-        return $test;
+        return $suggestions;
     }
 
 

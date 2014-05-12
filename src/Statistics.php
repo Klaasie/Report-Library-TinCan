@@ -23,10 +23,9 @@ class Statistics extends Report {
     * method __construct()
     *
     * @method __construct()
-    * @param object $lrs TinCan object
     */
-    public function __construct($lrs){
-        $this->lrs = $lrs;
+    public function __construct(){
+
     }
 
     /**
@@ -36,7 +35,7 @@ class Statistics extends Report {
     * @return Returns all statements
     */
     public function all(){
-        $result = $this->lrs->queryStatements([]);
+        $result = parent::$lrs->queryStatements([]);
         $content = json_decode($result->httpResponse['_content']);
 
         $this->response = new stdClass();
@@ -55,7 +54,7 @@ class Statistics extends Report {
     */
     public function monthly(){
         $objDate = new DateTime('-1 month');
-        $result = $this->lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
+        $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
 
         $this->response = new stdClass();
@@ -75,7 +74,7 @@ class Statistics extends Report {
     */
     public function weekly(){
         $objDate = new DateTime('-1 week');
-        $result = $this->lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
+        $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
 
         $this->response = new stdClass();
@@ -95,7 +94,7 @@ class Statistics extends Report {
     */
     public function daily(){
         $objDate = new DateTime('-1 day');
-        $result = $this->lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
+        $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
 
         $this->response = new stdClass();
@@ -156,7 +155,7 @@ class Statistics extends Report {
             $this->response->count = count($actors);
         }else{
             // $email is set and $this->response->statements is not, which means we still have to do a query.
-            $result = $this->lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => 'mailto:' . $email ))]);
+            $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => 'mailto:' . $email ))]);
             $content = json_decode($result->httpResponse['_content']);
 
             $this->response = new stdClass();
