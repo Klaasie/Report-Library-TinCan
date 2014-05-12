@@ -24,9 +24,8 @@ class Analyse extends Report {
      * @method getSuggestions()
      * @param int $amount Amount of suggestions to return
      * @return array with suggestions
-     * @todo Make the amount of different users having done a specific activity matter.
      * @todo Work out how to use related activities
-     * @todo build in checks
+     * @todo handle $agent->object in the filter
      */
     public function getSuggestions($amount = NULL){
         $result = parent::$lrs->queryStatements([]);
