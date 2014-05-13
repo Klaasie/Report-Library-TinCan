@@ -88,6 +88,20 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         // Assert
         $this->assertEquals($number, count(array_filter($test->response->activities)));
     }
+
+    public function testGetTimeElapsedString(){
+        // Act
+
+        // Assert
+
+    }
+
+    public function testGetRandom(){
+        // Act
+
+        // Assert
+
+    }
 }
 
 ?>
