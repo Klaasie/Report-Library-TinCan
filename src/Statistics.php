@@ -284,5 +284,17 @@ class Statistics extends Report {
         if (!$full) $string = array_slice($string, 0, 1);
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
+
+    /**
+    * method getRandom()
+    *
+    * @method getRandom()
+    * @return Object random statement object
+    */
+    function getRandom() {
+        $statements = $this->response->statements;
+        $index = array_rand($statements, 1);
+        return $statements[$index];
+    }
 }
 ?>
