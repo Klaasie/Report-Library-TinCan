@@ -12,6 +12,8 @@
  * @todo Develop a settings page
  * @todo Option to make a TinCan\Agent - for situations where someone would login
  * @todo Allow for ajax calls
+ * @todo Added a star rating system to demo, should this be implemented in the library itself?
+ * @todo Create printStatement function
  */
 class Report {
 
