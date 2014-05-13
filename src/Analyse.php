@@ -6,6 +6,7 @@
   *
   * @package Report
   * @subpackage Analyse
+  * @todo Function to analyse multiple people - Search in strings for similar activites - filter out nouns
   */
 class Analyse extends Report {
 
