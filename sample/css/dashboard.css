@@ -68,6 +68,10 @@ a {
   }
 }
 
+.sidebar-right h4 {
+  padding-top: 17px;
+}
+
 /* Sidebar navigation */
 .nav-sidebar {
   margin-right: -21px; /* 20px padding + 1px border */
@@ -107,14 +111,13 @@ a {
  */
 
 .placeholders {
-  margin-bottom: 30px;
   text-align: center;
 }
 .placeholders h4 {
   margin-bottom: 0;
 }
 .placeholder {
-  margin-bottom: 20px;
+  
 }
 .placeholder img {
   display: inline-block;
@@ -128,4 +131,19 @@ a {
 
 .first {
   width: 80%;
+}
+
+.panel p {
+  float: left;
+  width: 100%;
+  margin: 0;
+}
+
+.panel i {
+  float: left;
+  width: 100%;
+}
+
+.star-rating {
+  float: left;
 }
