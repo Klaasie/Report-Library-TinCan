@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2ef7a204ca80b8858da69d7a808dbbc9",
+    "hash": "e0fbda5be434ade682229bb4560c83ac",
     "packages": [
         {
             "name": "rusticisoftware/tincan",
