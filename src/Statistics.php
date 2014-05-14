@@ -236,14 +236,14 @@ class Statistics extends Report {
     * @return Returns statements with specific actor
     */
     public function getActor($email){
-        // Query actor with tincan\Agent
+        $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => $email))]);
+        $content = json_decode($result->httpResponse['_content']);
 
-        // $this->response = new stdClass();
-        // $this->response->success = $result->success;
-        // $this->response->date = $objDate->format(DateTime::ISO8601);
-        // $this->response->statements = $content->statements;
-        // $this->response->count = count($content->statements);
-        // return $this;
+        $this->response = new stdClass();
+        $this->response->success = $result->success;
+        $this->response->statements = $content->statements;
+        $this->response->count = count($content->statements);
+        return $this;
     }
 
     /**
