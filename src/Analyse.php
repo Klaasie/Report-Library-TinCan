@@ -1,33 +1,33 @@
 <?php
 /** 
-  * this class extends Report class.
-  *
-  * The Analyse class provides the ability to quickly execute specific analyse queries.
-  *
-  * @package Report
-  * @subpackage Analyse
-  * @todo Function to analyse multiple people - Search in strings for similar activites - filter out nouns
-  */
+ * this class extends Report class.
+ *
+ * The Analyse class provides the ability to quickly execute specific analyse queries.
+ *
+ * @package Report
+ * @subpackage Analyse
+ */
 class Analyse extends Report {
 
     /**
-     * Method __construct()
-     *
-     * @method __construct()
-     */
+    * Method __construct()
+    *
+    * @method __construct()
+    */
     public function __construct(){
 
     }
 
     /**
-     * Method getSuggestions()
-     *
-     * @method getSuggestions()
-     * @param int $amount Amount of suggestions to return
-     * @return array with suggestions
-     * @todo Work out how to use related activities
-     * @todo handle $agent->object in the filter
-     */
+    * Method getSuggestions($amount = NULL)
+    *
+    * @method getSuggestions($amount = NULL)
+    * @param int $amount Amount of suggestions to return
+    * @return array with suggestions
+    * @todo Work out how to use related activities
+    * @todo handle $agent->object in the filter
+    * @todo Save original statement to display who the suggestion is based on.
+    */
     public function getSuggestions($amount = NULL){
         $result = parent::$lrs->queryStatements([]);
         $statements = json_decode($result->httpResponse['_content']);
@@ -62,5 +62,16 @@ class Analyse extends Report {
         return $suggestions;
     }
 
+    /**
+    * Method compareActors($actors)
+    *
+    * @method compareActors($actors)
+    * @param array $actors
+    * @return object with similar activities
+    */
+    public function compareActors($actors){
+
+    }
 
 }
+?>
