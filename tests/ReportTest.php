@@ -17,9 +17,9 @@ class ReportTest extends PHPUnit_Framework_TestCase {
 
     public function testConnectLrs(){
         // Set up
-        $endpoint = 'http://learninglocker.banetworks.nl/data/xAPI/';
-        $username = '6e4cd6f48be6114142e4f480ba79831aef335f27';
-        $password = 'dd45015eedb66a514a2ce566ab3af8e11f656da7';
+        $endpoint = 'https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/';
+        $username = 'username';
+        $password = 'VGVzdFVzZXI6cGFzc3dvcmQ=';
         $auth = 'Basic ' . base64_encode($username . ':' . $password);
         $version = '1.0.1';
 
