@@ -1,15 +1,13 @@
 <?php
 /** 
-  * this class extends Report class.
-  *
-  * The Statistics class provides the ability to quickly query the LRS.
-  *
-  * @package Report
-  * @subpackage Statistics
-  * @todo getMonth($month) method
-  * @todo Check if response is available for actors(), verbs(), activities(). If not a query should follow.
-  * @todo Create a limit, queries that are too big take long to display. Note: Limit on public LRS is at 500. This takes roughly 3 - 5 seconds..
-  */
+ * this class extends Report class.
+ *
+ * The Statistics class provides the ability to quickly query the LRS.
+ *
+ * @package Report
+ * @subpackage Statistics
+ * @todo Different names for filterActors,Verbs,Activities
+ */
 class Statistics extends Report {
 
     /**
@@ -31,10 +29,14 @@ class Statistics extends Report {
     /**
     * method all()
     *
+    * Retrieves all statements available from the LRS.
+    * Note: Your LRS may have a limit on the amount of statements that it returns.
+    *       The public LRS for example returns up to 500 statements maximum.
+    *
     * @method all()
-    * @return Returns all statements
+    * @return Returns all statements from LRS.
     */
-    public function all(){
+    public function allTime(){
         $result = parent::$lrs->queryStatements([]);
         $content = json_decode($result->httpResponse['_content']);
 
@@ -46,13 +48,12 @@ class Statistics extends Report {
     }
 
     /**
-    * method monthly()
+    * method pastMonth()
     *
-    * @method monthly()
-    * @return Returns monthly statements
-    * @todo Figure out if we return monthly statements from this month, or 1 month back in time (eg. 30/31 days).
+    * @method pastMonth()
+    * @return Returns statements from last 30/31 days.
     */
-    public function monthly(){
+    public function pastMonth(){
         $objDate = new DateTime('-1 month');
         $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
@@ -66,13 +67,12 @@ class Statistics extends Report {
     }
 
     /**
-    * method weekly()
+    * method pastWeek()
     *
-    * @method weekly()
-    * @return Returns weekly statements
-    * @todo Do we return everything from now till 7 days back, or everything in the current weeknumber?
+    * @method pastWeek()
+    * @return Returns statements from last 7 days.
     */
-    public function weekly(){
+    public function pastWeek(){
         $objDate = new DateTime('-1 week');
         $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
@@ -86,13 +86,12 @@ class Statistics extends Report {
     }
 
     /**
-    * method daily()
+    * method pastDay()
     *
-    * @method daily()
-    * @return Returns daily statements
-    * @todo return evertyhing from 00:00 till NOW
+    * @method pastDay()
+    * @return Returns all statements from last 24 hours.
     */
-    public function daily(){
+    public function pastDay(){
         $objDate = new DateTime('-1 day');
         $result = parent::$lrs->queryStatements(['since' => $objDate->format(DateTime::ISO8601)]);
         $content = json_decode($result->httpResponse['_content']);
@@ -106,76 +105,80 @@ class Statistics extends Report {
     }
 
     /**
-    * method actors()
+    * method getMonth($month)
     *
-    * @method actors()
-    * @param null $email query on an actor specific
-    * @return Returns object with actors information
-    * @todo Wonder if this function should be split up in actors() and getActors (to prevent the use of the if/else statement)
+    * @method getMonth($month)
+    * @param string/int $month month of query
+    * @return Returns statements from specific month
+    * @todo option to query from last year?
     */
-    public function actors($email = null){
-        if($email == null && $this->response->statements){
-            $actors = array();
-            $statements = $this->response->statements;
-            foreach($statements as $statement):
-                // An actor can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
-                if(array_key_exists('mbox', $statement->actor)){
-                    $type = "mbox";
-                }else if(array_key_exists('mbox_sha1sum', $statement->actor)){
-                    $type = "mbox_sha1sum";
-                }else if(array_key_exists('openid', $statement->actor)){
-                    $type = "openid";
-                }else{
-                    $type = "account";
-                }
+    public function getMonth($month){
+        // Handle param, typeof == string or typeof == int etc.
 
-                // Extra check since a type "account" requires a different approach.
-                if($type != "account"){
-                    // Extra check to see if actor->type is set.
-                    if(isset($statement->actor->$type)){
-                        if(!array_key_exists($statement->actor->$type, $actors)){
-                            $actors[$statement->actor->$type] = $statement->actor;
-                        }
+        // $this->response = new stdClass();
+        // $this->response->success = $result->success;
+        // $this->response->date = $objDate->format(DateTime::ISO8601);
+        // $this->response->statements = $content->statements;
+        // $this->response->count = count($content->statements);
+        // return $this;
+    }
+
+    /**
+    * method filterActors()
+    *
+    * @method filterActors()
+    * @return Returns object with all actors from statements object
+    */
+    public function filterActors(){
+        $actors = array();
+        $statements = $this->response->statements;
+        foreach($statements as $statement):
+            // An actor can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
+            if(array_key_exists('mbox', $statement->actor)){
+                $type = "mbox";
+            }else if(array_key_exists('mbox_sha1sum', $statement->actor)){
+                $type = "mbox_sha1sum";
+            }else if(array_key_exists('openid', $statement->actor)){
+                $type = "openid";
+            }else{
+                $type = "account";
+            }
+
+            // Extra check since a type "account" requires a different approach.
+            if($type != "account"){
+                // Extra check to see if actor->type is set.
+                if(isset($statement->actor->$type)){
+                    if(!array_key_exists($statement->actor->$type, $actors)){
+                        $actors[$statement->actor->$type] = $statement->actor;
                     }
-                }else{
-                    if(isset($statement->actor->$type->name)){
-                        if(!array_key_exists($statement->actor->$type->name, $actors)){
-                            $actor[$statement->actor->$type->name] = $statement->actor;
-                        }
+                }
+            }else{
+                if(isset($statement->actor->$type->name)){
+                    if(!array_key_exists($statement->actor->$type->name, $actors)){
+                        $actor[$statement->actor->$type->name] = $statement->actor;
                     }
                 }
-                
-            endforeach;
-            array_filter($actors);
+            }
+            
+        endforeach;
+        array_filter($actors);
 
-            // Setting new response object.
-            $this->response = new stdClass();
-            $this->response->statements = $statements;
-            $this->response->actors = $actors;
-            $this->response->count = count($actors);
-        }else{
-            // $email is set and $this->response->statements is not, which means we still have to do a query.
-            $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => 'mailto:' . $email ))]);
-            $content = json_decode($result->httpResponse['_content']);
-
-            $this->response = new stdClass();
-            $this->response->success = $result->success;
-            $this->response->statements = $content->statements;
-            $this->response->count = count($content->statements);
-        }
+        // Setting new response object.
+        $this->response = new stdClass();
+        $this->response->statements = $statements;
+        $this->response->actors = $actors;
+        $this->response->count = count($actors);
 
         return $this;
     }
 
     /**
-    * method verbs()
+    * method filterVerbs()
     *
-    * @method verbs()
+    * @method filterVerbs()
     * @return Returns object with verbs information
-    * @todo Enable function to query specific verb
-    * @todo This function should do a query when no statements are set.
     */
-    public function verbs(){
+    public function filterVerbs(){
         $verbs = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
@@ -198,14 +201,12 @@ class Statistics extends Report {
     }
 
     /**
-    * method activities()
+    * method filterActivities()
     *
-    * @method activities()
+    * @method filterActivities()
     * @return Returns object with activity information
-    * @todo Enable function to query specific activity
-    * @todo This function should do a query when no statements are set.
     */
-    public function activities(){
+    public function filterActivities(){
         $activities = array();
         $statements = $this->response->statements;
         foreach($statements as $statement):
@@ -228,11 +229,64 @@ class Statistics extends Report {
     }
 
     /**
+    * method getActor($email)
+    *
+    * @method getActor($email)
+    * @param string $email email of actor
+    * @return Returns statements with specific actor
+    */
+    public function getActor($email){
+        // Query actor with tincan\Agent
+
+        // $this->response = new stdClass();
+        // $this->response->success = $result->success;
+        // $this->response->date = $objDate->format(DateTime::ISO8601);
+        // $this->response->statements = $content->statements;
+        // $this->response->count = count($content->statements);
+        // return $this;
+    }
+
+    /**
+    * method getVerb($verb)
+    *
+    * @method getVerb($verb)
+    * @param string $verb verb
+    * @return Returns statements with specific verb
+    */
+    public function getVerb($verb){
+        // Handle verb, is it a URI? or the display {'en-US'}? Etc.
+
+        // $this->response = new stdClass();
+        // $this->response->success = $result->success;
+        // $this->response->date = $objDate->format(DateTime::ISO8601);
+        // $this->response->statements = $content->statements;
+        // $this->response->count = count($content->statements);
+        // return $this;
+    }
+
+    /**
+    * method getActivity($activity)
+    *
+    * @method getActivity($activity)
+    * @param string $activity activity
+    * @return Returns statements with specific activity
+    */
+    public function getActivity($activity){
+        // Handle verb, is it a URI? or the display {'en-US'}? Etc.
+
+        // $this->response = new stdClass();
+        // $this->response->success = $result->success;
+        // $this->response->date = $objDate->format(DateTime::ISO8601);
+        // $this->response->statements = $content->statements;
+        // $this->response->count = count($content->statements);
+        // return $this;
+    }
+
+    /**
     * method getCount()
     *
     * @method getCount()
     * @return Returns count of previous method
-    * @todo Is it clear what is returned here?
     */
     public function getCount(){
         return $this->response->count;
@@ -245,18 +299,25 @@ class Statistics extends Report {
     * @return Returns an array of statements
     */
     public function getStatements(){
+
+        $i = 0;
+        foreach($this->response->statements as $statement){
+            $this->response->statements[$i] = new Statement($statement);
+            $i++;
+        }
+
         return $this->response->statements;
     }
 
     /**
-    * method getTimeElapsedString()
+    * method getTimeElapsedString($datetime, $full = false)
     *
-    * @method getTimeElapsedString()
+    * @method getTimeElapsedString($datetime, $full = false)
     * @param datetime $datetime A datetime or timestamp value
     * @param bool $full 
     * @return String of elapsed time
     */
-    function getTimeElapsedString($datetime, $full = false) {
+    public function getTimeElapsedString($datetime, $full = false) {
         $now = new DateTime;
         $ago = new DateTime($datetime);
         $diff = $now->diff($ago);
@@ -291,9 +352,10 @@ class Statistics extends Report {
     * @method getRandom()
     * @return Object random statement object
     */
-    function getRandom() {
+    function getRandomStatement() {
         $statements = $this->response->statements;
         $index = array_rand($statements, 1);
+        $statements[$index] = new Statement($statements[$index]);
         return $statements[$index];
     }
 }
