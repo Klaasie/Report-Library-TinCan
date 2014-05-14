@@ -5,7 +5,7 @@ $view = 'actor view';
 /*
  * Picked this email address since it's a pretty common one.
  */
-$response = $report->Statistics->actors('tincanjs-github@tincanapi.com');
+$response = $report->Statistics->GetActor('tincanjs-github@tincanapi.com');
 ?>
 <div class="container-fluid">
         <div class="row">
@@ -31,23 +31,7 @@ $response = $report->Statistics->actors('tincanjs-github@tincanapi.com');
                                 <tr>
                                     <td class="first">
                                         <?php
-                                            if(isset($statement->actor->name)):
-                                                echo $statement->actor->name . ' ';
-                                            else:
-                                                echo $statement->actor->mbox . ' ';
-                                            endif;
-
-                                            if(isset($statement->verb->display->{"en-US"})):
-                                                echo $statement->verb->display->{'en-US'} .' ';
-                                            else:
-                                                echo $statement->verb->id . ' ';
-                                            endif;
-
-                                            if(isset($statement->object->definition->name->{"en-US"})):
-                                                echo $statement->object->definition->name->{"en-US"};
-                                            else:
-                                                echo $statement->object->id;
-                                            endif;
+                                            echo $statement->getBasicStatement($statement);
                                         ?>
                                     </td>
                                     <td>

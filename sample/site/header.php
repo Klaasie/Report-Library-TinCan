@@ -7,6 +7,7 @@ $report = new Report();
  * Add your LRS here (or use the public LRS)
  */
 $report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/','username','VGVzdFVzZXI6cGFzc3dvcmQ=');
+$report->addAgent('tincanjava-github@tincanapi.com', 'Test User');
 
 ?>
 <html lang="en">
@@ -19,6 +20,8 @@ $report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/'
     <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
 
     <title>Dashboard</title>
+    <!-- Star rating system css -->
+    <link href="../css/labs.css" media="screen" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +34,11 @@ $report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/'
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Star Rating system js -->
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery.raty.js"></script>
+    <script src="../js/labs.js" type="text/javascript"></script>
 
 </head>
 
@@ -53,7 +61,6 @@ $report->connectLrs('https://cloud.scorm.com/ScormEngineInterface/TCAPI/public/'
                     <!--<li><a href="trainer.php">Trainer</a></li>-->
                     <li><a href="actor.php">Actor</a></li>
                     <li><a href="help.php">Help</a></li>
-                </ul>
             </div>
         </div>
     </div>

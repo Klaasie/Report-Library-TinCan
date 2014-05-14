@@ -5,14 +5,14 @@ $view = "manager view";
 /*
  * Getting daily statements to reduce page load.
  */
-$response = $report->Statistics->monthly();
+$response = $report->Statistics->pastMonth();
 ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="index.php">Overview</a></li>
-                    <li class="active"><a href="manager-analyse.php">Analyse</a></li>
+                    <!--<li class="active"><a href="manager-analyse.php">Analyse</a></li>-->
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
