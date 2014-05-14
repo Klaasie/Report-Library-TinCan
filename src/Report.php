@@ -7,13 +7,11 @@
  * to retrieve, analyse and display the records.
  * @package Report
  * @author Klaas Poortinga
- * @version V0.1
+ * @version V0.2
  *
  * @todo Develop a settings page
- * @todo Option to make a TinCan\Agent - for situations where someone would login
  * @todo Allow for ajax calls
  * @todo Added a star rating system to demo, should this be implemented in the library itself?
- * @todo Create printStatement function
  */
 class Report {
 
@@ -39,20 +37,6 @@ class Report {
     static $agent;
 
     /**
-    * Statistics placeholder, will be used for new Statistics()
-    *
-    * @var empty $Statistics
-    */
-    public $Statistics;
-
-    /**
-    * Analyse placeholder, will be used for new Analyse()
-    *
-    * @var empty $Analyse
-    */
-    public $Analyse;
-
-    /**
     * method __constructor()
     *
     * @method __construct()
@@ -64,7 +48,7 @@ class Report {
     /**
     * Connects the library to a Learning Record Store.
     *
-    * @method boolean connectLrs(lrs_endpoint, lrs_username, lrs_password)
+    * @method connectLrs(lrs_endpoint, lrs_username, lrs_password)
     * @param string $lrs_endpoint Learning Record Store endpoint
     * @param string $lrs_username Basic Auth Username
     * @param string $lrs_password Basic Auth Password
@@ -86,7 +70,7 @@ class Report {
     * This method adds a new agent to the object. This is particulary usefull for profile pages aswell as for
     * analyse blocks.
     *
-    * @method boolean addAgent($email, $name = NULL)
+    * @method addAgent($email, $name = NULL)
     * @param string $email Actor email
     * @param string $name Actor name default NULL
     * @return bool
@@ -107,5 +91,5 @@ class Report {
         }
         return false;
     }
-
 }
+?>
