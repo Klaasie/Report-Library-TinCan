@@ -6,6 +6,7 @@
  *
  * @package Report
  * @subpackage Analyse
+ * @todo finish new method
  */
 class Analyse extends Report {
 

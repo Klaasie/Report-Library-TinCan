@@ -7,7 +7,7 @@
  *
  * @package Report
  * @subpackage Statement
- * @todo Think of a better name
+ * @todo Think of a better name for class
  */
 class Statement extends Report {
 

@@ -6,7 +6,7 @@
  *
  * @package Report
  * @subpackage Statistics
- * @todo Different names for filterActors,Verbs,Activities
+ * @todo Finish all new added methods
  */
 class Statistics extends Report {
 
