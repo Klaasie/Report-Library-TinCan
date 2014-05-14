@@ -3,6 +3,7 @@
  * this class extends Report class.
  *
  * The Statement class provides the ability to retrieve statement values through methods.
+ * This class bears resemblance to the Tin Can API.
  *
  * @package Report
  * @subpackage Statement
