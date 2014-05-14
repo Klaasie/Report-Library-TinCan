@@ -1,6 +1,6 @@
 <?php 
 /** 
- *@todo Guide to connect to your own LRS here.
+ *
  */
 class StatisticsTest extends PHPUnit_Framework_TestCase {
 
@@ -19,9 +19,9 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->report = null;
     }
 
-    public function testAll(){
+    public function testAllTime(){
         // Act: get all statistics
-        $test = $this->report->Statistics->all();
+        $test = $this->report->Statistics->allTime();
 
         // Assert
         $this->assertTrue(isset($test)); // Check if query was a success.
@@ -29,9 +29,9 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
-    public function testMonthly(){
+    public function testPastMonth(){
         // Act: get monthly statistics
-        $test = $this->report->Statistics->monthly();
+        $test = $this->report->Statistics->pastMonth();
 
         // Assert
         $this->assertTrue(isset($test)); // Check if query was a success.
@@ -39,9 +39,9 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
-    public function testWeekly(){
+    public function testPastWeek(){
         // Act: get weekly statistics
-        $test = $this->report->Statistics->weekly();
+        $test = $this->report->Statistics->pastWeek();
 
         // Assert
         $this->assertTrue(isset($test)); // Check if query was a success.
@@ -49,44 +49,85 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->assertGreaterThan(0, $test->getCount()); // Check if at least 1 statement is being returned.
     }
 
-    public function testDaily(){
+    public function testPastDay(){
         // Act: get daily statistics
-        $test = $this->report->Statistics->daily();
+        $test = $this->report->Statistics->pastDay();
 
         // Assert
         $this->assertTrue(isset($test)); // Check if query was a success.
         $this->assertTrue($test->response->success); // Second check
+    }
+
+    public function testGetMonth(){
+        // Act
+
+        // Assert
+
     }
 
     /**
-     * @todo
-     * Check for all 3 if it actually returns the specific function. Right now it just checks if the array is correctly filtered.
-     */
-    public function testActors(){
+    * @todo Check for all 3 if it actually returns the specific function. Right now it just checks if the array is correctly filtered.
+    */
+    public function testFilterActors(){
         // Act
-        $test = $this->report->Statistics->monthly()->actors();
+        $test = $this->report->Statistics->pastMonth()->filterActors();
         $number = $test->getCount();
 
         // Assert
         $this->assertEquals($number, count(array_filter($test->response->actors)));
     }
 
-        public function testVerbs(){
+        public function testFilterVerbs(){
         // Act
-        $test= $this->report->Statistics->monthly()->verbs();
+        $test= $this->report->Statistics->pastMonth()->filterVerbs();
         $number = $test->getCount();
 
         // Assert
         $this->assertEquals($number, count(array_filter($test->response->verbs)));
     }
 
-        public function testActivities(){
+        public function testFilterActivities(){
         // Act
-        $test= $this->report->Statistics->monthly()->activities();
+        $test= $this->report->Statistics->pastMonth()->filterActivities();
         $number = $test->getCount();
 
         // Assert
         $this->assertEquals($number, count(array_filter($test->response->activities)));
+    }
+
+    public function testGetActor(){
+        // Act
+
+        // Assert
+
+    }
+
+    public function testGetVerb(){
+        // Act
+
+        // Assert
+
+    }
+
+    public function testGetActivity(){
+        // Act
+
+        // Assert
+
+    }
+
+    public function testGetCount(){
+        // Act
+
+        // Assert
+
+    }
+
+    public function testGetStatements(){
+        // Act
+
+        // Assert
+
     }
 
     public function testGetTimeElapsedString(){
@@ -96,7 +137,7 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
 
     }
 
-    public function testGetRandom(){
+    public function testGetRandomStatement(){
         // Act
 
         // Assert

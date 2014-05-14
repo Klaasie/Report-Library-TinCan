@@ -1,5 +1,7 @@
 <?php
-
+/**
+ *
+ */
 class ReportTest extends PHPUnit_Framework_TestCase {
 
     private $report;

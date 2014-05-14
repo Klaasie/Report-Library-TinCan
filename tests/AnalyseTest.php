@@ -1,6 +1,6 @@
 <?php 
-/** 
- *@todo Guide to connect to your own LRS here.
+/**
+ *
  */
 class AnalyseTest extends PHPUnit_Framework_TestCase {
 
@@ -19,14 +19,19 @@ class AnalyseTest extends PHPUnit_Framework_TestCase {
         $this->report = null;
     }
 
-    public function testSuggestion(){
+    public function testGetSuggestion(){
         // Act: get all statistics
-        //$test = $this->report->Statistics->all();
 
         // Assert
-        //$this->assertTrue(isset($test)); // Check if query was a success.
+
+    }
+
+    public function testCompareActors(){
+        // Act: get all statistics
+
+        // Assert
+
     }
 
 }
-
 ?>
