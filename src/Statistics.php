@@ -108,19 +108,42 @@ class Statistics extends Report {
     * method getMonth($month)
     *
     * @method getMonth($month)
-    * @param string/int $month month of query
+    * @param string/int $month month oof query - default current month
     * @return Returns statements from specific month
     * @todo option to query from last year?
     */
-    public function getMonth($month){
+    public function getMonth($month = NULL){
         // Handle param, typeof == string or typeof == int etc.
+        if(is_null($month)){
+            $intMonth = date('n');
+        }elseif(is_string($month)){
+            $intMonth = date_parse($month);
+            if($intMonth['month']){
+                $intMonth = $intMonth['month'];
+            }else{
+                return 'Error! ' . $month . ' is not found.';
+            }
+        } elseif(is_int($month)) {
+            $intMonth = $month;
+        }else {
+            //input format isn't accepted
+            return "Error! " . $month . " is not a found.";
+        }
 
-        // $this->response = new stdClass();
-        // $this->response->success = $result->success;
-        // $this->response->date = $objDate->format(DateTime::ISO8601);
-        // $this->response->statements = $content->statements;
-        // $this->response->count = count($content->statements);
-        // return $this;
+        $objDate = new DateTime('2014-0' . $intMonth . '-01');
+
+        $result = Parent::$lrs->queryStatements([
+                'since' => $objDate->format(DateTime::ISO8601),
+                'until' => $objDate->modify('last day of this month')->format(DateTime::ISO8601)
+            ]);
+        $content = json_decode($result->httpResponse['_content']);
+
+        $this->response = new stdClass();
+        $this->response->success = $result->success;
+        $this->response->date = $objDate->format(DateTime::ISO8601);
+        $this->response->statements = $content->statements;
+        $this->response->count = count($content->statements);
+        return $this;
     }
 
     /**
