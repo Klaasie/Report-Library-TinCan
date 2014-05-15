@@ -12,6 +12,7 @@
  * @todo Develop a settings page
  * @todo Allow for ajax calls
  * @todo Added a star rating system to demo, should this be implemented in the library itself?
+ * @todo Allow to rate your own statements, give value to the importance of the statement
  */
 class Report {
 
