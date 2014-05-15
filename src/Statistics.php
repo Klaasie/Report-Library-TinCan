@@ -113,7 +113,6 @@ class Statistics extends Report {
     * @todo option to query from last year?
     */
     public function getMonth($month = NULL){
-        // Handle param, typeof == string or typeof == int etc.
         if(is_null($month)){
             $intMonth = date('n');
         }elseif(is_string($month)){
@@ -257,6 +256,7 @@ class Statistics extends Report {
     * @method getActor($email)
     * @param string $email email of actor
     * @return Returns statements with specific actor
+    * @todo support account object
     */
     public function getActor($email){
         $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => $email))]);
@@ -275,16 +275,21 @@ class Statistics extends Report {
     * @method getVerb($verb)
     * @param string $verb verb
     * @return Returns statements with specific verb
+    * @todo Handle display object correctly.
     */
     public function getVerb($verb){
-        // Handle verb, is it a URI? or the display {'en-US'}? Etc.
+        if(!filter_var($verb, FILTER_VALIDATE_URL)){
+            return "Input should be an URL.";
+        }
 
-        // $this->response = new stdClass();
-        // $this->response->success = $result->success;
-        // $this->response->date = $objDate->format(DateTime::ISO8601);
-        // $this->response->statements = $content->statements;
-        // $this->response->count = count($content->statements);
-        // return $this;
+        $result = Report::$lrs->queryStatements(['verb' => new TinCan\Verb(array('id' => $verb))]);
+        $content = json_decode($result->httpResponse['_content']);
+
+        $this->response = new stdClass();
+        $this->response->success = $result->success;
+        $this->response->statements = $content->statements;
+        $this->response->count = count($content->statements);
+        return $this;
     }
 
     /**
@@ -293,16 +298,20 @@ class Statistics extends Report {
     * @method getActivity($activity)
     * @param string $activity activity
     * @return Returns statements with specific activity
+    * @todo write this method
     */
     public function getActivity($activity){
-        // Handle verb, is it a URI? or the display {'en-US'}? Etc.
+        if(!filter_var($activity, FILTER_VALIDATE_URL)){
+            return "Input should be an URL.";
+        }
+        $result = Report::$lrs->queryStatements(['activity' => new TinCan\Activity(array('id' => $activity))]);
+        $content = json_decode($result->httpResponse['_content']);
 
-        // $this->response = new stdClass();
-        // $this->response->success = $result->success;
-        // $this->response->date = $objDate->format(DateTime::ISO8601);
-        // $this->response->statements = $content->statements;
-        // $this->response->count = count($content->statements);
-        // return $this;
+        $this->response = new stdClass();
+        $this->response->success = $result->success;
+        $this->response->statements = $content->statements;
+        $this->response->count = count($content->statements);
+        return $this;
     }
 
     /**
