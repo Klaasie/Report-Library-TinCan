@@ -1,8 +1,8 @@
 <?php 
 /** 
- *
+ * @todo Define tests
  */
-class StatisticsTest extends PHPUnit_Framework_TestCase {
+class StatementTest extends PHPUnit_Framework_TestCase {
     // Arrange
     private $report;
 
@@ -18,40 +18,39 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
         $this->report = null;
     }
 
-    public function TestGetBasicStatement(){
+    public function testGetBasicStatement(){
+        // Act
+        $test = true;
+        // Assert
+        $this->assertTrue($test);
+    }
+
+    public function testGetActorName(){
         // Act
 
         // Assert
 
     }
 
-    public function TestGetActorName(){
+    public function testGetVerbName(){
         // Act
 
         // Assert
 
     }
 
-    public function TestGetVerbName(){
+    public function testGetActivityName(){
         // Act
 
         // Assert
 
     }
 
-    public function TestGetActivityName(){
+    public function testGetTimeElapsedString(){
         // Act
 
         // Assert
 
     }
-
-    public function TestGetActivityUrl(){
-        // Act
-
-        // Assert
-
-    }
-
 }
 ?>
