@@ -28,6 +28,7 @@ class Analyse extends Report {
     * @todo Work out how to use related activities
     * @todo handle $agent->object in the filter
     * @todo Save original statement to display who the suggestion is based on.
+    * @todo If 1 person does the same activity twice, count still goes up.
     */
     public function getSuggestions($amount = NULL){
         $result = parent::$lrs->queryStatements(['limit' => 100]);
@@ -72,9 +73,35 @@ class Analyse extends Report {
     * @method compareActors($actors)
     * @param array $actors
     * @return object with similar activities
+    * @todo Handle account object correctly
+    * @todo build checks to make sure mbox is set
     */
-    public function compareActors($actors){
+    public function compareActors(array $actors){
+        $activities = array();
+        foreach($actors as $actor){
+            $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => $actor))]);
+            $statements = json_decode($result->httpResponse['_content']);
+            //var_dump($statements);
+            foreach($statements->statements as $statement){
+                if(isset($activities[$statement->object->id])){
+                    $activities[$statement->object->id]['count']++; 
+                    $activities[$statement->object->id]['who'][$statement->actor->mbox] = $statement->actor->name;
+                }else{
+                    $activities[$statement->object->id]['activity']['name'] = $statement->object->definition->name->{"en-US"};
+                    $activities[$statement->object->id]['activity']['id'] = $statement->object->id;
+                    $activities[$statement->object->id]['count'] = 1;
+                    $activities[$statement->object->id]['who'][$statement->actor->mbox] = $statement->actor->name;
+                }
+            }
+        }
 
+        foreach($activities as $key => $activity){
+            if($activity['count'] == 1){
+                unset($activities[$key]);
+            }
+        }
+
+        return $activities;
     }
 
 }
