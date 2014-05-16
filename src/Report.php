@@ -93,5 +93,59 @@ class Report {
         }
         return false;
     }
+
+    /**
+    * Get the actor values
+    *
+    * This method returns actor information in one format.
+    * This method is to prevent having to check which actor type we're dealing with 
+    * in every function we're using actors.
+    *
+    * @method actorValues($actorObj)
+    * @param object $actorObj
+    * @return object actor information
+    * @todo Handle groups
+    */
+    static function actorValues($actorObj) {
+        $actor = new stdClass();
+
+        if(isset($actorObj->objectType) && $actorObj->objectType == "Group"){
+            // Handle groups
+            return "Groups currently not supported.";
+        }else{
+            // An Actor Agent can be uniquely identified by: mbox, mbox_sha1sum, openid, account.
+            if(array_key_exists('mbox', $actorObj)){
+                $actor->id = $actorObj->mbox;
+                if(isset($actorObj->name)){
+                    $actor->name = $actorObj->name;
+                }else{
+                    $actor->name = NULL;
+                }
+            }else if(array_key_exists('mbox_sha1sum', $actorObj)){
+                $actor->id = $actorObj->mbox_sha1sum;
+                if(isset($actorObj->name)){
+                    $actor->name = $actorObj->name;
+                }else{
+                    $actor->name = NULL;
+                }
+            }else if(array_key_exists('openid', $actorObj)){
+                $actor->id = $actorObj->openid;
+                if(isset($actorObj->name)){
+                    $actor->name = $actorObj->name;
+                }else{
+                    $actor->name = NULL;
+                }
+            }else{
+                $actor->id = $actorObj->account->homePage;
+                if(isset($actorObj->account->name)){
+                    $actor->name = $actorObj->account->name;
+                }else{
+                    $actor->name = NULL;
+                }
+            }
+        }
+
+        return $actor;
+    }
 }
 ?>

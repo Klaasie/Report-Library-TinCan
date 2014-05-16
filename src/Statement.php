@@ -50,17 +50,13 @@ class Statement extends Report {
     * @return String of actor name
     */
     public function getActorName(){
-        if(isset($this->statement->actor->name)):
-            $actor = $this->statement->actor->name;
-        elseif(isset($this->statement->actor->account)):
-            if(isset($this->statement->actor->account->name)):
-                $actor = $this->statement->actor->account->name;
-            else:
-                $actor = $this->statement->actor->account->homePage;
-            endif;
-        else:
-            $actor = $this->statement->actor->mbox;
-        endif;
+        $actorValues = parent::actorValues($this->statement->actor);
+
+        if($actorValues->name){
+            $actor = $actorValues->name;
+        }else{
+            $actor = $actorValues->id;
+        }
 
         return $actor;
     }

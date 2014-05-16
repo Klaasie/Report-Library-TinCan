@@ -81,16 +81,16 @@ class Analyse extends Report {
         foreach($actors as $actor){
             $result = parent::$lrs->queryStatements(['agent' => new TinCan\Agent(array('mbox' => $actor))]);
             $statements = json_decode($result->httpResponse['_content']);
-            //var_dump($statements);
             foreach($statements->statements as $statement){
+                $actorValues = parent::actorValues($statement->actor);
                 if(isset($activities[$statement->object->id])){
                     $activities[$statement->object->id]['count']++; 
-                    $activities[$statement->object->id]['who'][$statement->actor->mbox] = $statement->actor->name;
+                    $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
                 }else{
                     $activities[$statement->object->id]['activity']['name'] = $statement->object->definition->name->{"en-US"};
                     $activities[$statement->object->id]['activity']['id'] = $statement->object->id;
                     $activities[$statement->object->id]['count'] = 1;
-                    $activities[$statement->object->id]['who'][$statement->actor->mbox] = $statement->actor->name;
+                    $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
                 }
             }
         }
