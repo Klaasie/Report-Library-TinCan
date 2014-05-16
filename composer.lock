@@ -887,12 +887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "26e31fccd7ea7a542a70ab2b29f9cf69766fc8bb"
+                "reference": "d1f424e2963dec0c0d71b95216fd6274ac462208"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/26e31fccd7ea7a542a70ab2b29f9cf69766fc8bb",
-                "reference": "26e31fccd7ea7a542a70ab2b29f9cf69766fc8bb",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/d1f424e2963dec0c0d71b95216fd6274ac462208",
+                "reference": "d1f424e2963dec0c0d71b95216fd6274ac462208",
                 "shasum": ""
             },
             "require": {
@@ -975,7 +975,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2014-05-10 21:19:21"
+            "time": "2014-05-14 19:56:37"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -2256,12 +2256,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "838bee3213e2b27e4d9fa5dc13464d8f0a65a73b"
+                "reference": "50be4f30d0a93404e5d62b05fd7294492cf64c4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/838bee3213e2b27e4d9fa5dc13464d8f0a65a73b",
-                "reference": "838bee3213e2b27e4d9fa5dc13464d8f0a65a73b",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/50be4f30d0a93404e5d62b05fd7294492cf64c4f",
+                "reference": "50be4f30d0a93404e5d62b05fd7294492cf64c4f",
                 "shasum": ""
             },
             "require": {
@@ -2304,7 +2304,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-14 06:54:00"
+            "time": "2014-05-15 08:56:35"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -2743,12 +2743,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "6af8182fbd3ead19f8f9e01d33e9b09063e1a1b0"
+                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/6af8182fbd3ead19f8f9e01d33e9b09063e1a1b0",
-                "reference": "6af8182fbd3ead19f8f9e01d33e9b09063e1a1b0",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
+                "reference": "55253c3f37b1b47ad797eb95f27b0a33e3a76d2f",
                 "shasum": ""
             },
             "require": {
@@ -2792,7 +2792,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-05-14 11:51:43"
+            "time": "2014-05-15 19:43:48"
         },
         {
             "name": "zendframework/zend-cache",
