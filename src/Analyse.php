@@ -87,7 +87,11 @@ class Analyse extends Report {
                     $activities[$statement->object->id]['count']++; 
                     $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
                 }else{
-                    $activities[$statement->object->id]['activity']['name'] = $statement->object->definition->name->{"en-US"};
+                    if(isset($statement->object->definition->name->{'en-US'})){
+                        $activities[$statement->object->id]['activity']['name'] = $statement->object->definition->name->{"en-US"};
+                    }else{
+                        $activities[$statement->object->id]['activity']['name'] = $statement->object->id;
+                    }
                     $activities[$statement->object->id]['activity']['id'] = $statement->object->id;
                     $activities[$statement->object->id]['count'] = 1;
                     $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
