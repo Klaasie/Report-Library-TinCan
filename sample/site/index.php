@@ -5,7 +5,7 @@ $view = "manager view";
 /*
  * Getting daily statements to reduce page load.
  */
-$response = $report->Statistics->pastMonth();
+$response = $report->Statistics->pastDay();
 ?>
     <div class="container-fluid">
         <div class="row">
@@ -15,7 +15,7 @@ $response = $report->Statistics->pastMonth();
                     <!--<li><a href="manager-analyse.php">Analyse</a></li>-->
                 </ul>
             </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-8 col-md-offset-2">
+            <div class="col-sm-9 col-sm-offset-3 col-md-6 col-md-offset-2">
                 <h1 class="page-header">Dashboard / <?php echo $view; ?></h1>
                 <div class="col-md-12"><div id="collapsible"></div></div>
                 <div class="row placeholders">
@@ -24,7 +24,7 @@ $response = $report->Statistics->pastMonth();
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->getCount(); ?> </h4>
-                                <span class="">Monthly Statements</span>
+                                <span class="">Daily Statements</span>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@ $response = $report->Statistics->pastMonth();
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->filterActors()->getCount(); ?> </h4>
-                                <span class="">Monthly Actors</span>
+                                <span class="">Daily Actors</span>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@ $response = $report->Statistics->pastMonth();
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->filterVerbs()->getCount(); ?> </h4>
-                                <span class="">Monthly Verbs</span>
+                                <span class="">Daily Verbs</span>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ $response = $report->Statistics->pastMonth();
                             <!-- Default panel contents -->
                             <div class="panel-heading">
                                 <h4><?php echo $response->filterActivities()->getCount(); ?> </h4>
-                                <span class="">Monthly activities</span>
+                                <span class="">Daily activities</span>
                             </div>
                         </div>
                     </div>
@@ -79,8 +79,8 @@ $response = $report->Statistics->pastMonth();
                                 </a></p>
                                 <i>
                                     <?php
-                                        if(isset($statement->timestamp)):
-                                            echo $response->getTimeElapsedString($statement->timestamp);
+                                        if(isset($statement->statement->timestamp)):
+                                            echo $statement->getTimeElapsedString();
                                         endif;
                                     ?>
                                 </i>
@@ -89,7 +89,6 @@ $response = $report->Statistics->pastMonth();
                         </div>
                     <?php endforeach; ?>
                 </div>
-            </div>
             <div class="col-sm-3 col-md-2 sidebar-right">
                 <?php if(Report::$agent): ?>
                     <h4>Hello <?php echo Report::$agent->getName(); ?>!</h4>
@@ -103,6 +102,25 @@ $response = $report->Statistics->pastMonth();
                         <?php endforeach; ?>
                     </ul>
                 </div>
+
+                <?php //$results = $report->Analyse->compareActors(array('test@beta.projecttincan.com','Tjerk@testemail.com')); ?>
+
+                <!--
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Comparing Actors</div>
+                    <div class="panel-body">
+                        Actors <strong>Wisse</strong> and <strong>Klaas</strong> have the following activities in common:
+                    </div>
+                    <ul class="list-group">
+                    <?php foreach($results as $result): ?>
+                        <li class="list-group-item">
+                            <a href="<?php echo $result['activity']['id']; ?>"><?php echo $result['activity']['name']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                    </u>
+                </div>
+            -->
+            </div>
             </div>
         </div>
     </div>

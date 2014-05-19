@@ -30,12 +30,20 @@
                                 $lrs->connectLrs('lrs_endpoint','lrs_username','lrs_password');
                             </div>
 
-                        Retrieving statements is as easy as:<br />
+                        Retrieving statistics is as easy as:<br />
 
                             <div class="well">
-                                $response = $lrs->Statistics->monthly(); //Get monthly statistics <br />
-                                $response = $lrs->Statistics->monthly()->actors(); //Retrieves amount of monthly actors
+                                $response = $lrs->Statistics->pastMonth(); //Get monthly statements <br />
+                                $response = $lrs->Statistics->pastMonth()->filterActors(); //Retrieves amount of monthly actors
                             </div>
+
+                        Or use the analyse class to get suggestions or compare actors!
+
+                            <div class="well">
+                                $response = $lrs->Analyse->getSuggestions(5); //Retrieves the 5 most popular activities <br />
+                                $response = $lrs->Analyse->compareActors(array(actor1, actor2, ..)) //Retrieves the activities these actors have in common
+                            </div>
+
                     </p>
                     
                     <h4>Information</h4>

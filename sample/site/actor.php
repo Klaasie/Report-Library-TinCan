@@ -17,36 +17,30 @@ $response = $report->Statistics->GetActor('tincanjs-github@tincanapi.com');
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <h1 class="page-header">Dashboard / <?php echo $view; ?></h1>
                 <div class="col-md-12"><div id="collapsible"></div></div>
-                <h2>Timeline</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($response->getStatements() as $statement): ?>
-                                <tr>
-                                    <td class="first">
-                                        <?php
-                                            echo $statement->getBasicStatement($statement);
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <i>
-                                            <?php
-                                                if(isset($statement->timestamp)):
-                                                    echo $response->getTimeElapsedString($statement->timestamp);
-                                                endif;
-                                            ?>
-                                        </i>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                <div class="page-header">
+                    <h2 class="">Timeline</h2>
+                </div>
+                    <?php foreach($response->getStatements() as $statement): ?>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <p>
+                                    <a href="<?php if($statement->getActivityUrl()): echo $statement->getActivityUrl(); else: echo '#'; endif; ?>">
+                                    <?php
+                                        echo $statement->getBasicStatement();
+                                    ?>
+                                </a></p>
+                                <i>
+                                    <?php
+                                        if(isset($statement->statement->timestamp)):
+                                            echo $statement->getTimeElapsedString();
+                                        endif;
+                                    ?>
+                                </i>
+                                <div class="star-rating"></div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
                 </div>
             </div>
         </div>

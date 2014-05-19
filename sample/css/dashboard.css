@@ -55,8 +55,6 @@ a {
 }
 @media (min-width: 995px) {
   .sidebar-right {
-    position: fixed;
-    top: 51px;
     bottom: 0;
     right: 0;
     z-index: 1000;
