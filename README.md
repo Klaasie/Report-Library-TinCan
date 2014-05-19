@@ -33,7 +33,7 @@ $response = $lrs->Statistics->pastMonth()->filterActors(); //Retrieves amount of
 Or use the Analyse class to get suggestions or compare actors!
 
 ```php
-$response = $lrs->Analyse->getSuggestions(5); //Retrieves the 5 most popular activities <br />
+$response = $lrs->Analyse->getSuggestions(5); //Retrieves the 5 most popular activities
 $response = $lrs->Analyse->compareActors(array(actor1, actor2, ..)) //Retrieves the activities these actors have in common
 ```
 
