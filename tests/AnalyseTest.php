@@ -19,7 +19,7 @@ class AnalyseTest extends PHPUnit_Framework_TestCase {
         $this->report = null;
     }
 
-    public function testGetSuggestion(){
+    public function testGetSuggestions(){
         // Act: get all statistics
         $activities = $this->report->Analyse->getSuggestions();
 
