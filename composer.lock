@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "e0fbda5be434ade682229bb4560c83ac",
+    "hash": "45645e8faeaa60665b03a2489b3e3c39",
     "packages": [
         {
             "name": "rusticisoftware/tincan",
@@ -887,12 +887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/phpDocumentor2.git",
-                "reference": "d1f424e2963dec0c0d71b95216fd6274ac462208"
+                "reference": "b8bba4bd0a5ca59e475879fa43c5955de2ff51da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/d1f424e2963dec0c0d71b95216fd6274ac462208",
-                "reference": "d1f424e2963dec0c0d71b95216fd6274ac462208",
+                "url": "https://api.github.com/repos/phpDocumentor/phpDocumentor2/zipball/b8bba4bd0a5ca59e475879fa43c5955de2ff51da",
+                "reference": "b8bba4bd0a5ca59e475879fa43c5955de2ff51da",
                 "shasum": ""
             },
             "require": {
@@ -959,6 +959,9 @@
                     "phpDocumentor": [
                         "src/",
                         "tests/unit/"
+                    ],
+                    "Cilex\\Provider": [
+                        "src/"
                     ]
                 }
             },
@@ -975,7 +978,7 @@
                 "documentation",
                 "phpdoc"
             ],
-            "time": "2014-05-14 19:56:37"
+            "time": "2014-05-19 13:35:46"
         },
         {
             "name": "phpdocumentor/reflection",
@@ -1468,12 +1471,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "a995604307026ed8693ffba8848765532030371b"
+                "reference": "09efe8d1165735bed167f3d08c60b39957baa952"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a995604307026ed8693ffba8848765532030371b",
-                "reference": "a995604307026ed8693ffba8848765532030371b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/09efe8d1165735bed167f3d08c60b39957baa952",
+                "reference": "09efe8d1165735bed167f3d08c60b39957baa952",
                 "shasum": ""
             },
             "require": {
@@ -1525,7 +1528,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-04-30 08:57:33"
+            "time": "2014-05-19 02:26:13"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1716,12 +1719,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "270cdf04ea2965711205e8c64bf1d56d058cc76e"
+                "reference": "fb86fa5c327fb805b7bdf036ea11911496975d44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/270cdf04ea2965711205e8c64bf1d56d058cc76e",
-                "reference": "270cdf04ea2965711205e8c64bf1d56d058cc76e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/fb86fa5c327fb805b7bdf036ea11911496975d44",
+                "reference": "fb86fa5c327fb805b7bdf036ea11911496975d44",
                 "shasum": ""
             },
             "require": {
@@ -1782,7 +1785,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-05-13 14:02:36"
+            "time": "2014-05-17 08:33:56"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -2625,12 +2628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Validator.git",
-                "reference": "421b16f1c2426fedc86b39add6b771c7c85c130a"
+                "reference": "f03d97e144dd176d64c3b66508ca815ec23fb020"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Validator/zipball/421b16f1c2426fedc86b39add6b771c7c85c130a",
-                "reference": "421b16f1c2426fedc86b39add6b771c7c85c130a",
+                "url": "https://api.github.com/repos/symfony/Validator/zipball/f03d97e144dd176d64c3b66508ca815ec23fb020",
+                "reference": "f03d97e144dd176d64c3b66508ca815ec23fb020",
                 "shasum": ""
             },
             "require": {
@@ -2642,6 +2645,7 @@
                 "doctrine/cache": "~1.0",
                 "egulias/email-validator": "~1.0",
                 "symfony/config": "~2.2",
+                "symfony/expression-language": "~2.4",
                 "symfony/http-foundation": "~2.1",
                 "symfony/intl": "~2.3",
                 "symfony/property-access": "~2.2",
@@ -2652,6 +2656,7 @@
                 "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
                 "egulias/email-validator": "Strict (RFC compliant) email validation",
                 "symfony/config": "",
+                "symfony/expression-language": "For using the 2.4 Expression validator",
                 "symfony/http-foundation": "",
                 "symfony/intl": "",
                 "symfony/property-access": "For using the 2.4 Validator API",
@@ -2686,7 +2691,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "http://symfony.com",
-            "time": "2014-05-12 09:28:39"
+            "time": "2014-05-16 14:25:29"
         },
         {
             "name": "symfony/yaml",
@@ -2695,12 +2700,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a"
+                "reference": "2158ca824145bd01877f58c987aff828bccddefa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/e9525fc511a51e7bfa214c6c420515c580fda35a",
-                "reference": "e9525fc511a51e7bfa214c6c420515c580fda35a",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/2158ca824145bd01877f58c987aff828bccddefa",
+                "reference": "2158ca824145bd01877f58c987aff828bccddefa",
                 "shasum": ""
             },
             "require": {
@@ -2735,7 +2740,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-18 20:40:13"
+            "time": "2014-05-16 14:25:18"
         },
         {
             "name": "twig/twig",

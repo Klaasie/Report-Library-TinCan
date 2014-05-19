@@ -23,11 +23,18 @@ $lrs = new Report();
 $lrs->connectLrs('lrs_endpoint','lrs_username','lrs_password');
 ```
 
-Retrieving statements is as easy as:
+Retrieving statistics is as easy as:
 
 ```php
-$response = $lrs->Statistics->monthly(); //Get monthly statistics
-$response = $lrs->Statistics->monthly()->actors(); //Retrieves amount of monthly actors
+$response = $lrs->Statistics->pastMonth(); //Get monthly statistics
+$response = $lrs->Statistics->pastMonth()->filterActors(); //Retrieves amount of monthly actors
+```
+
+Or use the Analyse class to get suggestions or compare actors!
+
+```php
+$response = $lrs->Analyse->getSuggestions(5); //Retrieves the 5 most popular activities <br />
+$response = $lrs->Analyse->compareActors(array(actor1, actor2, ..)) //Retrieves the activities these actors have in common
 ```
 
 #### Information
