@@ -84,8 +84,10 @@ class Analyse extends Report {
             foreach($statements->statements as $statement){
                 $actorValues = parent::actorValues($statement->actor);
                 if(isset($activities[$statement->object->id])){
-                    $activities[$statement->object->id]['count']++; 
-                    $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
+                    if(!array_key_exists($actorValues->id, $activities[$statement->object->id]['who'])){
+                        $activities[$statement->object->id]['count']++; 
+                        $activities[$statement->object->id]['who'][$actorValues->id] = $actorValues->name;
+                    }
                 }else{
                     if(isset($statement->object->definition->name->{'en-US'})){
                         $activities[$statement->object->id]['activity']['name'] = $statement->object->definition->name->{"en-US"};
