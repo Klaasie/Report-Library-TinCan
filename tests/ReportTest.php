@@ -74,5 +74,18 @@ class ReportTest extends PHPUnit_Framework_TestCase {
         $this->assertNull(Report::$agent->getName()); // Should return NULL since $name was not set.
     }
 
+    public function testActorValues(){
+        // Set up:
+        $actor = new stdClass();
+        $actor->mbox = "mailto:tincanjs-github@tincanapi.com";
+        $actor->name = "Test Actor";
+
+        // Act
+        $result = Report::actorValues($actor);
+
+        $this->assertEquals($actor->mbox, $result->id);
+        $this->assertEquals($actor->name, $result->name);
+    }
+
 }
 ?>

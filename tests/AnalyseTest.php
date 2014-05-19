@@ -1,6 +1,6 @@
 <?php 
 /**
- *
+ * These tests should be more meaningfull.
  */
 class AnalyseTest extends PHPUnit_Framework_TestCase {
 
@@ -21,16 +21,18 @@ class AnalyseTest extends PHPUnit_Framework_TestCase {
 
     public function testGetSuggestion(){
         // Act: get all statistics
+        $activities = $this->report->Analyse->getSuggestions();
 
         // Assert
-
+        $this->assertTrue(isset($activities));
     }
 
     public function testCompareActors(){
         // Act: get all statistics
+        $activities = $this->report->Analyse->compareActors(array('test@beta.projecttincan.com','tincanjs-github@tincanapi.com'));
 
         // Assert
-
+        $this->assertTrue(isset($activities));
     }
 
 }

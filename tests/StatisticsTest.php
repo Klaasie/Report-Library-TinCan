@@ -97,32 +97,43 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
 
     public function testGetActor(){
         // Act
+        $result = $this->report->Statistics->getActor('mailto:tincanjs-github@tincanapi.com');
 
         // Assert
-
+        $this->assertTrue($result->response->success);
+        $this->assertEquals($result->response->count, count($result->response->statements));
     }
 
     public function testGetVerb(){
         // Act
+        $result = $this->report->Statistics->getVerb('http://activitystrea.ms/schema/1.0/read');
 
         // Assert
-
+        $this->assertTrue($result->response->success);
+        $this->assertEquals($result->response->count, count($result->response->statements));
     }
 
     public function testGetActivity(){
         // Act
+        $result = $this->report->Statistics->getActivity('http://rusticisoftware.github.com/TinCanJS');
 
         // Assert
-
+        $this->assertTrue($result->response->success);
+        $this->assertEquals($result->response->count, count($result->response->statements));
     }
 
     public function testGetCount(){
         // Act
+        $result = $this->report->Statistics->pastWeek();
 
         // Assert
-
+        $this->assertEquals($result->response->count, $result->getcount());
     }
 
+    /**
+     * This one needs a different approach since the method turns all statements into statement-objects
+     * @todo Think of a way to test this one correctly
+     */
     public function testGetStatements(){
         // Act
 
@@ -132,9 +143,10 @@ class StatisticsTest extends PHPUnit_Framework_TestCase {
 
     public function testGetRandomStatement(){
         // Act
+        $result = $this->report->Statistics->pastweek()->getRandomStatement();
 
         // Assert
-
+        $this->assertEquals(1, count($result));
     }
 }
 
