@@ -85,7 +85,11 @@ class Statement extends Report {
     */
     public function getActivityName(){
         if(isset($this->statement->object->definition->name->{"en-US"})):
-            $object = $this->statement->object->definition->name->{"en-US"};
+            if(strlen($this->statement->object->definition->name->{"en-US"}) > 0){
+                $object = $this->statement->object->definition->name->{"en-US"};
+            }else{
+                $object = $this->statement->object->id;
+            }
         else:
             $object = $this->statement->object->id;
         endif;
