@@ -131,7 +131,7 @@ class Statistics extends Report {
 
         $objDate = new DateTime('2014-0' . $intMonth . '-01');
 
-        $result = Parent::$lrs->queryStatements([
+        $result = parent::$lrs->queryStatements([
                 'since' => $objDate->format(DateTime::ISO8601),
                 'until' => $objDate->modify('last day of this month')->format(DateTime::ISO8601)
             ]);
@@ -325,10 +325,13 @@ class Statistics extends Report {
     * @return Object random statement object
     */
     function getRandomStatement() {
-        $statements = $this->response->statements;
-        $index = array_rand($statements, 1);
-        $statements[$index] = new Statement($statements[$index]);
-        return $statements[$index];
+        $statements = $this->response->statements; //var_dump($statements);
+        if(isset($statements[0])){
+            $index = array_rand($statements, 1);
+            $statements[$index] = new Statement($statements[$index]);
+            return $statements[$index]->statement;
+        }
+        return false;
     }
 }
 ?>
