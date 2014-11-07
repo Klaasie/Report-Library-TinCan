@@ -36,9 +36,3 @@ Or use the Analyse class to get suggestions or compare actors!
 $response = $lrs->Analyse->getSuggestions(5); //Retrieves the 5 most popular activities
 $response = $lrs->Analyse->compareActors(array(actor1, actor2, ..)) //Retrieves the activities these actors have in common
 ```
-
-#### Information
-
-For a demo go to http://report.klaasweb.nl
-
-Documentation: http://report.klaasweb.nl/phpdoc/classes/Report.html
